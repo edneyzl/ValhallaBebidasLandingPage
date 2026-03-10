@@ -229,6 +229,12 @@ cd ValhallaBebidas
 
 ---
 
+## 📸 Preview
+
+![Homepage](./img/HomePage.png)
+
+---
+
 ## 👨‍💻 Autor
 
 Desenvolvido por **TecnoMancy**
