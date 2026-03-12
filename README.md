@@ -49,10 +49,10 @@ ValhallaBebidas/
 ├── catalogo.html               # Catálogo de produtos (em desenvolvimento)
 │
 ├── CSS/
-│   ├── homepage.css            # Estilos base — desktop 1440px
-│   ├── tablet.css              # Responsividade 601px–1020px
-│   ├── mobile.css              # Responsividade até 600px
-│   └── footer.css              # Estilos do footer
+│   ├── homepage.css            # CSS - HomePage
+│   ├── tablet.css              
+│   ├── mobile.css              
+│ 
 │
 ├── JS/
 │   ├── animations.js           # GSAP + Lenis + ScrollTrigger
