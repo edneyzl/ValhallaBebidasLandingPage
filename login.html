@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acessar Conta - Valhalla Bebidas</title>
+    <link rel="shortcut icon" href="./img/Marcas/Valhalla.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="./CSS/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet" />
+</head>
+ 
+<body>
+ 
+    <div class="login">
+ 
+        <!-- ═══════════ BRAND — Painel esquerdo ═══════════ -->
+        <div class="login__brand">
+ 
+            <!-- Logo + nome -->
+            <div class="logo__brand">
+                <a href="index.html">
+                    <img src="./img/Marcas/ValhallaBlack.svg" alt="Valhalla Bebidas" />
+                </a>
+                <h2>Valhalla Bebidas</h2>
+            </div>
+ 
+            <!-- Mockup -->
+            <img src="./img/mockupValhalla.png" alt="Mockup Valhalla Bebidas" class="login__mockup" />
+ 
+        </div>
+ 
+        <!-- ═══════════ FORM — Painel direito ═══════════ -->
+        <div class="login__form-wrapper">
+            <form class="login__form" id="formLogin">
+ 
+                <!-- Título -->
+                <div class="login__title">
+                    <h1>Bem vindo(a) de <span>Volta!</span></h1>
+                    <p>Faça o login para continuar.</p>
+                </div>
+ 
+                <!-- Inputs -->
+                <div class="login__inputs">
+ 
+                    <label for="email" class="login__input">
+                        <img src="./img/Icons/Envelope.svg" alt="" />
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Digite seu email"
+                            autocomplete="email"
+                            required
+                        />
+                    </label>
+ 
+                    <label for="senha" class="login__input">
+                        <img src="./img/Icons/Lock.svg" alt="" />
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        />
+                    </label>
+
+ 
+                </div>
+ 
+                <!-- Ações -->
+                <div class="login__actions">
+                    <button type="submit" class="login__btn">Acessar conta</button>
+                    <p class="login__register">
+                        Não tem uma conta?
+                        <a href="cadastro.html">Inscreva-se</a>
+                    </p>
+                </div>
+ 
+            </form>
+        </div>
+ 
+    </div>
+ 
+    <script src="./JS/script.js"></script>
+ 
+</body>
+ 
+</html>
+ 
