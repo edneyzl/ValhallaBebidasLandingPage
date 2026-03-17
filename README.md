@@ -1,4 +1,4 @@
-# 🍺 Valhalla Bebidas — Landing Page
+# 🍺 Valhalla Bebidas
 
 > Distribuidora premium de bebidas. Plataforma B2B para parceiros comerciais realizarem pedidos de produtos das maiores marcas do mercado.
 
@@ -23,10 +23,9 @@ O projeto está dividido em duas frentes:
 | HTML5 semântico | Estrutura das páginas |
 | CSS3 + Custom Properties | Estilização com tokens de design |
 | JavaScript puro (ES6+) | Interações e animações |
-| [GSAP 3.12](https://gsap.com/) | Animações de scroll |
+| [GSAP 3.12](https://gsap.com/) | Animações de scroll e entrada |
 | [ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) | Trigger de animações |
 | [Lenis](https://github.com/darkroomengineering/lenis) | Scroll suave |
-| [Boxicons](https://boxicons.com/) | Ícones |
 | [Sora](https://fonts.google.com/specimen/Sora) | Tipografia |
 
 ### Backend *(planejado)*
@@ -44,33 +43,35 @@ O projeto está dividido em duas frentes:
 ```
 ValhallaBebidas/
 ├── index.html                  # Landing page principal
-├── login.html                  # Página de login (em desenvolvimento)
+├── login.html                  # Página de login ✅
 ├── cadastro.html               # Página de cadastro (em desenvolvimento)
 ├── catalogo.html               # Catálogo de produtos (em desenvolvimento)
 │
 ├── CSS/
-│   ├── homepage.css            # CSS - HomePage
-│   ├── tablet.css              
-│   ├── mobile.css              
-│ 
+│   ├── homepage.css            # CSS — HomePage (desktop)
+│   ├── tablet.css              # CSS — Tablet (601px–1020px)
+│   ├── mobile.css              # CSS — Mobile (≤600px)
+│   └── login.css               # CSS — Login
 │
 ├── JS/
 │   ├── animations.js           # GSAP + Lenis + ScrollTrigger
-│   └── script.js               # Scripts gerais
+│   ├── script.js               # Nav, carrinho e auth
+│   └── login.js                # Animações de entrada do login
 │
 └── img/
-    ├── Valhalla.svg            # Logo
+    ├── Icons/                  # Ícones SVG
+    ├── Marcas/                 # Logos das marcas parceiras
     ├── ModelValhalla.png       # Imagem hero
-    ├── Ambev.svg               # Marcas parceiras
-    ├── Coca-Cola.svg
-    ├── Pepsico.svg
-    └── ...                     # Ícones e assets
+    ├── mockupValhalla.png      # Mockup iPhone para login
+    ├── HomePage.png            # Preview da landing page
+    └── LoginPage.png           # Preview da página de login
 ```
 
 ---
 
-## 📄 Seções da Landing Page
+## 📄 Páginas
 
+### Landing Page
 | Seção | Descrição |
 |---|---|
 | **Nav** | Fixo, com estados visitante e logado. Menu mobile com dropdown |
@@ -83,6 +84,13 @@ ValhallaBebidas/
 | **Category** | Cards de destaque do catálogo |
 | **Partner** | Formulário de cadastro para novos parceiros |
 | **Footer** | Links, contato e redes sociais |
+
+### Login
+| Elemento | Descrição |
+|---|---|
+| **Painel esquerdo** | Gradiente dourado + mockup iPhone com a landing page |
+| **Formulário** | Email, senha, botão de acesso e link para cadastro |
+| **Animação** | Mockup sobe + formulário desliza ao carregar a página |
 
 ---
 
@@ -113,13 +121,17 @@ ValhallaBebidas/
 
 ## ✨ Animações
 
-Todas as animações são controladas pelo `animations.js`:
-
-- **Reveal on scroll** — elementos com `.reveal` aparecem com fade + slide up ao entrar na viewport
-- **Stats sequencial** — números e textos aparecem um a um com delay de `0.4s`
+**`animations.js` — Landing Page:**
+- **Reveal on scroll** — elementos com `.reveal` aparecem com fade + slide up
+- **Stats sequencial** — números aparecem um a um com delay de `0.4s`
 - **Category cards** — cards aparecem sequencialmente com delay de `0.3s`
 - **Scroll suave** — Lenis com `duration: 0.8` integrado ao ScrollTrigger
 - **Links âncora** — scroll suave via `lenis.scrollTo()` com offset da nav
+
+**`login.js` — Login:**
+- **Mockup** — sobe da base com fade ao carregar
+- **Logo** — desce do topo com fade
+- **Formulário** — desliza da direita com fade
 
 ---
 
@@ -143,37 +155,38 @@ A nav alterna automaticamente entre os estados **visitante** e **logado** em des
 
 ---
 
+## 🛒 Carrinho
+
+O carrinho lateral (sidebar) é controlado via `localStorage` enquanto o backend não está integrado:
+
+- Abre ao clicar no ícone da nav (visível apenas para logados)
+- Persiste os itens entre páginas via `localStorage`
+- Função global `adicionarAoCarrinho(produto)` disponível para o catálogo
+- Ao fazer logout, o carrinho é limpo automaticamente
+
+---
+
 ## 🗄️ Modelagem do Banco *(planejado)*
 
 ```
-Usuario
-├── Id
-├── Nome
-├── Email
-├── SenhaHash
-└── CriadoEm
+Cliente
+├── Id, Nome, Email, SenhaHash
+├── Documento (CPF/CNPJ), Telefone
+├── Status, EnderecoId → Endereco
 
 Produto
-├── Id
-├── Nome
-├── Categoria
-├── Badge
-├── Preco
-├── ImagemUrl
-└── Ativo
+├── Id, Nome, EanCodBarras, Descricao
+├── PrecoVenda, PrecoCusto, Estoque
+├── Status, CategoriaId → Categoria
 
 Pedido
-├── Id
-├── UsuarioId → Usuario
-├── Status
-└── CriadoEm
+├── Id, ClienteId → Cliente
+├── ValorTotal, Status, DataPedido
 
 PedidoItem
-├── Id
-├── PedidoId → Pedido
+├── Id, PedidoId → Pedido
 ├── ProdutoId → Produto
-├── Quantidade
-└── PrecoUnitario
+└── Quantidade, Subtotal
 ```
 
 ---
@@ -198,7 +211,7 @@ Confirmação
 
 ## 📦 Como Rodar
 
-Por enquanto o projeto é **100% frontend estático** — sem dependências ou build step.
+O projeto é **100% frontend estático** — sem dependências ou build step.
 
 ```bash
 # Clone o repositório
@@ -218,7 +231,9 @@ cd ValhallaBebidas
 - [x] Responsividade desktop, tablet e mobile
 - [x] Nav com dropdown e estado logado/visitante
 - [x] Animações GSAP + Lenis
-- [ ] `login.html` e `cadastro.html`
+- [x] Carrinho lateral com localStorage
+- [x] `login.html`
+- [ ] `cadastro.html`
 - [ ] `catalogo.html` com filtros
 - [ ] `carrinho.html`
 - [ ] Backend .NET — AuthController
@@ -231,7 +246,11 @@ cd ValhallaBebidas
 
 ## 📸 Preview
 
+### Landing Page
 ![Homepage](./img/HomePage.png)
+
+### Login
+![Login](./img/LoginPage.png)
 
 ---
 
