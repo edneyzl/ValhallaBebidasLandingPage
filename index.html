@@ -11,16 +11,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet"/>
   </head>
-
+ 
   <body id="body">
-    
+ 
+    <!-- ═══════════ CART OVERLAY ═══════════ -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+ 
+    <!-- ═══════════ CART SIDEBAR ═══════════ -->
+    <aside class="cart" id="cart">
+      <div class="cart__header">
+        <h2>Carrinho</h2>
+        <button type="button" class="cart__close" id="cartClose">
+          <img src="./img/Icons/close.svg" alt="Fechar" />
+        </button>
+      </div>
+ 
+      <div class="cart__items" id="cartItems">
+        <!-- itens injetados via JS -->
+      </div>
+ 
+      <div class="cart__footer">
+        <div class="cart__total">
+          <span>Total</span>
+          <span id="cartTotal">R$ 0,00</span>
+        </div>
+        <a href="checkout.html" class="cart__btn">FINALIZAR PEDIDO</a>
+      </div>
+    </aside>
+ 
     <!-- ═══════════ NAV ═══════════ -->
     <nav class="nav" id="nav">
       <div class="nav__left">
         <a href="#body" class="nav__logo">
           <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
         </a>
-
+ 
         <div class="nav__links">
           <a href="#body">Início</a>
           <a href="#about">Sobre</a>
@@ -28,42 +53,34 @@
           <a href="#footer">Contato</a>
         </div>
       </div>
-
+ 
       <!-- ── Desktop direito ── -->
       <div class="nav__right">
+ 
         <!-- Visitante -->
         <div class="nav__guest">
           <a href="login.html" class="nav__btn nav__btn--login">Login</a>
-          <a href="cadastro.html" class="nav__btn nav__btn--register"
-            >Cadastrar-se</a
-          >
+          <a href="cadastro.html" class="nav__btn nav__btn--register">Cadastrar-se</a>
         </div>
-
+ 
         <!-- Logado -->
         <div class="nav__user" id="nav-user">
           <button type="button" class="nav__user-btn" id="userBtn">
             <span class="nav__user-name" id="userName">Usuário</span>
             <img src="./img/Icons/arrowDown.svg" alt="" />
           </button>
-
-          <div
-            class="nav__dropdown nav__dropdown--desktop"
-            id="dropdown-desktop"
-          >
+ 
+          <div class="nav__dropdown nav__dropdown--desktop" id="dropdown-desktop">
             <a href="compras.html" class="nav__dropdown-item">
               <span class="nav__dropdown-icon">
                 <img src="./img/Icons/market.svg" alt="" />
               </span>
               <span>Minhas Compras</span>
             </a>
-
+ 
             <div class="nav__dropdown-divider"></div>
-
-            <a
-              href="#"
-              class="nav__dropdown-item nav__dropdown-item--logout"
-              id="btn-logout-desktop"
-            >
+ 
+            <a href="#" class="nav__dropdown-item nav__dropdown-item--logout" id="btn-logout-desktop">
               <span class="nav__dropdown-icon">
                 <img src="./img/Icons/logout.svg" alt="" />
               </span>
@@ -71,26 +88,29 @@
             </a>
           </div>
         </div>
+ 
       </div>
-
+ 
+      <!-- ── Carrinho — fora do nav__right, visível em todos os breakpoints ── -->
+      <button type="button" class="nav__cart" id="cartBtn">
+        <img src="./img/Icons/cart.svg" alt="Carrinho" />
+        <span class="nav__cart-count" id="cartCount">0</span>
+      </button>
+ 
       <!-- ── Mobile ── -->
       <div class="nav__mobile">
-        <button
-          type="button"
-          class="nav__mobile-btn"
-          id="menuBtn"
-          aria-label="Abrir menu"
-        >
+        <button type="button" class="nav__mobile-btn" id="menuBtn" aria-label="Abrir menu">
           <img src="./img/Icons/menu.svg" alt="" />
         </button>
-
+ 
         <div class="nav__dropdown nav__dropdown--mobile" id="dropdown-mobile">
+ 
           <div class="nav__dropdown-user dropdown-auth">
             <span id="userNameMobile">Usuário</span>
           </div>
-
+ 
           <div class="nav__dropdown-divider dropdown-auth"></div>
-
+ 
           <!-- Só logado vê -->
           <a href="compras.html" class="nav__dropdown-item dropdown-auth">
             <span class="nav__dropdown-icon">
@@ -98,9 +118,9 @@
             </span>
             <span>Minhas Compras</span>
           </a>
-
+ 
           <div class="nav__dropdown-divider dropdown-auth"></div>
-
+ 
           <!-- Só visitante vê -->
           <a href="login.html" class="nav__dropdown-item dropdown-guest">
             <span class="nav__dropdown-icon">
@@ -108,80 +128,68 @@
             </span>
             <span>Login</span>
           </a>
-
+ 
           <a href="cadastro.html" class="nav__dropdown-item dropdown-guest">
             <span class="nav__dropdown-icon">
               <img src="./img/Icons/user.svg" alt="" />
             </span>
             <span>Cadastrar-se</span>
           </a>
-
+ 
           <div class="nav__dropdown-divider dropdown-guest"></div>
-
-          <a
-            href="#"
-            class="nav__dropdown-item nav__dropdown-item--logout dropdown-auth"
-            id="btn-logout-mobile"
-          >
+ 
+          <a href="#" class="nav__dropdown-item nav__dropdown-item--logout dropdown-auth" id="btn-logout-mobile">
             <span class="nav__dropdown-icon">
               <img src="./img/Icons/logout.svg" alt="" />
             </span>
             <span>Logout</span>
           </a>
+ 
         </div>
       </div>
     </nav>
-
+ 
     <!-- ═══════════ HERO ═══════════ -->
     <section class="hero" id="hero">
       <div class="hero__content">
         <div class="hero__tag reveal">
           <h3>DISTRIBUIDORA DE BEBIDAS</h3>
         </div>
-
+ 
         <div class="hero__title reveal">
           <h1>Valhalla</h1>
           <span>Bebidas</span>
         </div>
-
+ 
         <p class="hero__description reveal">
           Rótulos que seus clientes não encontram em qualquer<br />
           lugar. Distribuição premium para negócios que exigem o<br />
           melhor.
         </p>
-
+ 
         <div class="hero__actions reveal">
-          <a href="#catalogo" class="hero__btn hero__btn--primary"
-            >Ver Produtos</a
-          >
+          <a href="#catalogo" class="hero__btn hero__btn--primary">Ver Produtos</a>
           <a href="#contato" class="hero__btn hero__btn--secondary">Contato</a>
         </div>
       </div>
-
+ 
       <div class="hero__visual reveal">
-        <img
-          src="./img/ModelValhalla.png"
-          alt="Representante Valhalla Bebidas"
-        />
+        <img src="./img/ModelValhalla.png" alt="Representante Valhalla Bebidas" />
       </div>
     </section>
-
-    <!-- ═══════════ BRANDS (CPA) ═══════════ -->
+ 
+    <!-- ═══════════ BRANDS ═══════════ -->
     <div class="brands" id="brands">
       <div class="brands__track">
-        <!-- Conjunto 1 -->
         <img src="./img/Marcas/Ambev.svg" alt="Ambev" />
         <img src="./img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
         <img src="./img/Marcas/Pepsico.svg" alt="Pepsico" />
-        <!-- Conjunto 2 -->
         <img src="./img/Marcas/Ambev.svg" alt="Ambev" />
         <img src="./img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
         <img src="./img/Marcas/Pepsico.svg" alt="Pepsico" />
-        <!-- Conjunto 3 -->
         <img src="./img/Marcas/Ambev.svg" alt="Ambev" />
         <img src="./img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
         <img src="./img/Marcas/Pepsico.svg" alt="Pepsico" />
-        <!-- Conjunto 4 (cópia dos 3 acima) -->
         <img src="./img/Marcas/Ambev.svg" alt="Ambev" />
         <img src="./img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
         <img src="./img/Marcas/Pepsico.svg" alt="Pepsico" />
@@ -193,8 +201,8 @@
         <img src="./img/Marcas/Pepsico.svg" alt="Pepsico" />
       </div>
     </div>
-
-    <!-- ═══════════ STATS (Info) ═══════════ -->
+ 
+    <!-- ═══════════ STATS ═══════════ -->
     <section class="stats" id="stats">
       <ul class="stats__list">
         <li class="stats__item">
@@ -211,25 +219,22 @@
         </li>
       </ul>
     </section>
-
+ 
     <!-- ═══════════ ABOUT ═══════════ -->
     <section class="about" id="about">
       <div class="about__left reveal">
         <h2>SOBRE A VALHALLA</h2>
         <h1>Onde os maiores <br />rótulos do mundo <br />encontram você.</h1>
       </div>
-
+ 
       <div class="about__right reveal">
         <p>
           A <span>Valhalla Bebidas</span> nasceu com uma missão clara:
-          <span
-            >conectar negócios às<br />bebidas que seus clientes mais
-            desejam</span
-          >, com acesso exclusivo a portfólios das maiores fabricantes do
-          planeta.<br /><br />Da venda no atacado ao suporte estratégico, somos
-          parceiros do seu negócio em cada etapa.
+          <span>conectar negócios às<br />bebidas que seus clientes mais desejam</span>,
+          com acesso exclusivo a portfólios das maiores fabricantes do planeta.<br /><br />
+          Da venda no atacado ao suporte estratégico, somos parceiros do seu negócio em cada etapa.
         </p>
-
+ 
         <div class="about__cards">
           <div class="about__cards-row">
             <div class="about__card">
@@ -241,7 +246,7 @@
               <h2>QUALIDADE</h2>
             </div>
           </div>
-
+ 
           <div class="about__cards-row">
             <div class="about__card">
               <img src="./img/Icons/HandShake.svg" alt="" />
@@ -255,7 +260,7 @@
         </div>
       </div>
     </section>
-
+ 
     <!-- ═══════════ WORK ═══════════ -->
     <section class="work" id="work">
       <div class="work__content">
@@ -265,54 +270,40 @@
           Tornamos a parceria simples e rápida para que você foque no que
           realmente importa: <span>vender</span>.
         </p>
-
+ 
         <ul class="work__step reveal">
           <li class="work__step__item">
             <div class="work__step__circle">
-              <div>
-                <span>1</span>
-              </div>
+              <div><span>1</span></div>
             </div>
             <h2>CADASTRE-SE</h2>
-            <p>
-              Crie sua conta como parceiro em menos de 5<br />minutos com seu
-              CNPJ/CPF.
-            </p>
+            <p>Crie sua conta como parceiro em menos de 5<br />minutos com seu CNPJ/CPF.</p>
           </li>
-
+ 
           <li class="work__step__item">
             <div class="work__step__circle">
-              <div>
-                <span>2</span>
-              </div>
+              <div><span>2</span></div>
             </div>
             <h2>EXPLORE</h2>
-            <p>
-              Acesse o catálogo exclusivo com centenas de<br />SKUs das maiores
-              marcas.
-            </p>
+            <p>Acesse o catálogo exclusivo com centenas de<br />SKUs das maiores marcas.</p>
           </li>
-
+ 
           <li class="work__step__item">
             <div class="work__step__circle">
-              <div>
-                <span>3</span>
-              </div>
+              <div><span>3</span></div>
             </div>
             <h2>PEÇA</h2>
-            <p>
-              Faça seu pedido online com preços especiais<br />para parceiros.
-            </p>
+            <p>Faça seu pedido online com preços especiais<br />para parceiros.</p>
           </li>
         </ul>
       </div>
     </section>
-
+ 
     <!-- ═══════════ CPA ═══════════ -->
     <section class="cpa" id="cpa">
       <div class="cpa__content">
         <h2>DISTRIBUIDORES AUTORIZADOS DOS MAIORES DO MERCADO</h2>
-
+ 
         <div class="cpa__mark">
           <img src="./img/Marcas/Ambev.svg" alt="Ambev" />
           <img src="./img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
@@ -320,10 +311,11 @@
         </div>
       </div>
     </section>
-
+ 
     <!-- ═══════════ CATEGORY ═══════════ -->
     <section class="category" id="category">
       <div class="category__content">
+ 
         <!-- Cabeçalho -->
         <div class="category__first">
           <div class="category__first-div">
@@ -333,27 +325,25 @@
               <h2>Destaques</h2>
             </div>
           </div>
-
+ 
           <a href="catalogo.html" class="category__first-link">
             <h3>VER CATÁLOGO COMPLETO</h3>
             <img src="./img/Icons/arrow.svg" alt="Arrow" class="category__arrow" />
           </a>
         </div>
-
+ 
         <!-- Cards -->
         <ul class="category__second">
-          <!-- Card 1 -->
+ 
           <li class="category__card">
             <div class="category__card-badge category__card-badge--first">
               <h2>ALTA ROTATIVIDADE</h2>
             </div>
-
             <div class="category__card-bottom">
               <div class="category__card-title">
                 <h3>CERVEJAS PREMIUM</h3>
                 <h2>Linha Artesanal</h2>
               </div>
-
               <div class="category__card-type">
                 <h3>Cervejas</h3>
                 <a href="#">
@@ -363,19 +353,16 @@
               </div>
             </div>
           </li>
-
-          <!-- Card 2 -->
+ 
           <li class="category__card">
             <div class="category__card-badge category__card-badge--second">
               <h2>EXCLUSIVO</h2>
             </div>
-
             <div class="category__card-bottom">
               <div class="category__card-title">
                 <h3>ENERGÉTICOS & FUNCIONAIS</h3>
                 <h2>Energy & Sport</h2>
               </div>
-
               <div class="category__card-type">
                 <h3>Energéticos</h3>
                 <a href="#">
@@ -385,19 +372,16 @@
               </div>
             </div>
           </li>
-
-          <!-- Card 3 -->
+ 
           <li class="category__card">
             <div class="category__card-badge category__card-badge--third">
               <h2>NOVO</h2>
             </div>
-
             <div class="category__card-bottom">
               <div class="category__card-title">
                 <h3>REFRIGERANTES & SUCOS</h3>
                 <h2>Linha Refrescante</h2>
               </div>
-
               <div class="category__card-type">
                 <h3>Refrigerantes</h3>
                 <a href="#">
@@ -407,122 +391,121 @@
               </div>
             </div>
           </li>
+ 
         </ul>
       </div>
     </section>
-
+ 
     <!-- ═══════════ PARTNER ═══════════ -->
     <section class="partner" id="partner">
       <div class="partner__content">
         <h3>SEJA PARCEIRO</h3>
-
+ 
         <div class="partner__title">
           <h2>Entre para</h2>
           <h1>Valhalla Bebidas</h1>
         </div>
-
-        <p>
-          Faça parte da rede de distribuidores que já transforma o mercado de
-          bebidas no Brasil.
-        </p>
-
+ 
+        <p>Faça parte da rede de distribuidores que já transforma o mercado de bebidas no Brasil.</p>
+ 
         <div class="partner__buttons">
           <label for="nome" class="partner__input">
             <input type="text" id="nome" placeholder="Seu nome" />
           </label>
-
+ 
           <label for="cnpj" class="partner__input">
             <input type="text" id="cnpj" placeholder="CNPJ/CPF" />
           </label>
-
+ 
           <button type="button" class="partner__btn">QUERO SER PARCEIRO</button>
         </div>
       </div>
     </section>
-
+ 
     <!-- ═══════════ FOOTER ═══════════ -->
     <footer class="footer" id="footer">
       <div class="footer__content">
-
-          <!-- ── Coluna 1 — Logo + descrição ── -->
-          <div class="footer__brand">
-              <a href="#body" class="footer__logo">
-                  <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+ 
+        <!-- Coluna 1 — Logo + descrição -->
+        <div class="footer__brand">
+          <a href="#body" class="footer__logo">
+            <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+          </a>
+          <p class="footer__desc">
+            Distribuição premium de bebidas para negócios que exigem o melhor.
+          </p>
+        </div>
+ 
+        <!-- Coluna 2 — Links -->
+        <nav class="footer__nav">
+          <h4 class="footer__nav-title">Navegação</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#body">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#category">Catálogo</a></li>
+            <li><a href="#work">Como Funciona</a></li>
+            <li><a href="#partner">Seja Parceiro</a></li>
+          </ul>
+        </nav>
+ 
+        <!-- Coluna 3 — Contato -->
+        <div class="footer__contact">
+          <h4 class="footer__nav-title">Contato</h4>
+          <ul class="footer__nav-list">
+            <li>
+              <a href="mailto:contato@valhallabebidas.com.br">
+                <img src="./img/Icons/Envelope.svg" alt="" />
+                contato@valhallabebidas.com.br
               </a>
-              <p class="footer__desc">
-                  Distribuição premium de bebidas para negócios que exigem o melhor.
-              </p>
+            </li>
+            <li>
+              <a href="https://wa.me/5511999999999" target="_blank">
+                <img src="./img/Icons/Whatsapp.svg" alt="" />
+                (11) 99999-9999
+              </a>
+            </li>
+          </ul>
+        </div>
+ 
+        <!-- Coluna 4 — Redes Sociais -->
+        <div class="footer__social">
+          <h4 class="footer__nav-title">Redes Sociais</h4>
+          <div class="footer__social-icons">
+            <a href="#" target="_blank" class="footer__social-btn" aria-label="Instagram">
+              <img src="./img/Icons/Instagram.svg" alt="" />
+            </a>
+            <a href="#" target="_blank" class="footer__social-btn" aria-label="WhatsApp">
+              <img src="./img/Icons/Whatsapp.svg" alt="" />
+            </a>
+            <a href="#" target="_blank" class="footer__social-btn" aria-label="LinkedIn">
+              <img src="./img/Icons/Linkedin.svg" alt="" />
+            </a>
+            <a href="#" target="_blank" class="footer__social-btn" aria-label="Facebook">
+              <img src="./img/Icons/Facebook.svg" alt="" />
+            </a>
           </div>
-
-          <!-- ── Coluna 2 — Links ── -->
-          <nav class="footer__nav">
-              <h4 class="footer__nav-title">Navegação</h4>
-              <ul class="footer__nav-list">
-                  <li><a href="#body">Início</a></li>
-                  <li><a href="#about">Sobre</a></li>
-                  <li><a href="#category">Catálogo</a></li>
-                  <li><a href="#work">Como Funciona</a></li>
-                  <li><a href="#partner">Seja Parceiro</a></li>
-              </ul>
-          </nav>
-
-          <!-- ── Coluna 3 — Contato ── -->
-          <div class="footer__contact">
-              <h4 class="footer__nav-title">Contato</h4>
-              <ul class="footer__nav-list">
-                  <li>
-                      <a href="mailto:contato@valhallabebidas.com.br">
-                        <img src="./img/Icons/Envelope.svg" alt="">
-                          contato@valhallabebidas.com.br
-                      </a>
-                  </li>
-                  <li>
-                      <a href="https://wa.me/5511999999999" target="_blank">
-                        <img src="./img/Icons/Whatsapp.svg" alt="">
-                          (11) 99999-9999
-                      </a>
-                  </li>
-              </ul>
-          </div>
-
-          <!-- ── Coluna 4 — Redes Sociais ── -->
-          <div class="footer__social">
-              <h4 class="footer__nav-title">Redes Sociais</h4>
-              <div class="footer__social-icons">
-                  <a href="#" target="_blank" class="footer__social-btn" aria-label="Instagram">
-                    <img src="./img/Icons/Instagram.svg" alt="">
-                  </a>
-                  <a href="#" target="_blank" class="footer__social-btn" aria-label="WhatsApp">
-                    <img src="./img/Icons/Whatsapp.svg" alt="">
-                  </a>
-                  <a href="#" target="_blank" class="footer__social-btn" aria-label="LinkedIn">
-                    <img src="./img/Icons/Linkedin.svg" alt="">
-                  </a>
-                  <a href="#" target="_blank" class="footer__social-btn" aria-label="Facebook">
-                    <img src="./img/Icons/Facebook.svg" alt="">
-                  </a>
-              </div>
-          </div>
-
+        </div>
+ 
       </div>
-
-      <!-- ── Bottom bar ── -->
+ 
+      <!-- Bottom bar -->
       <div class="footer__bottom">
-          <p>© 2026 Valhalla Bebidas. Todos os direitos reservados.</p>
-          <p>Desenvolvido por <span>Tecnomancy</span></p>
+        <p>© 2026 Valhalla Bebidas. Todos os direitos reservados.</p>
+        <p>Desenvolvido por <span>Tecnomancy</span></p>
       </div>
-  </footer>
-
+    </footer>
+ 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
+ 
     <!-- Lenis -->
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
+ 
     <script src="./JS/animations.js"></script>
+    <script src="./JS/nav.js"></script>
     <script src="./JS/script.js"></script>
-
+ 
   </body>
-
+ 
 </html>
