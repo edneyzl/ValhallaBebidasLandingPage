@@ -3309,13 +3309,13 @@ body {
 
   .category__card {
     width: 100%;
-    height: auto;
+    height: 800px;
     min-height: 320px;
   }
 
-  .category__card-badge--first  { width: auto; padding: 10px 20px; }
-  .category__card-badge--second { width: auto; padding: 10px 20px; }
-  .category__card-badge--third  { width: auto; padding: 10px 20px; }
+  .category__card-badge--first  { width: 95%; padding: 10px 20px; }
+  .category__card-badge--second { width: 95%; padding: 10px 20px; }
+  .category__card-badge--third  { width: 95%; padding: 10px 20px; }
 
   .category__card-badge h2 {
     font-size: 14px;
@@ -3393,5 +3393,5 @@ body {
     font-size: 16px;
   }
 
-} /* fim @media tablet */
+}
 

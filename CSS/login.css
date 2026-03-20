@@ -382,3 +382,307 @@ body {
     --register-size:    15px;
   }
 }
+
+/* ════════════════════════════════════════════════════════
+   login-mobile.css — Valhalla Bebidas
+   Mobile: até 600px
+   Tablet: 601px – 1020px
+════════════════════════════════════════════════════════ */
+ 
+/* ════════════════════════════════════════════════════════
+   NAV MOBILE — escondida no desktop
+════════════════════════════════════════════════════════ */
+.login__nav {
+  display: none; /* desktop não vê */
+}
+
+.login__title_mobile {
+  display: none;
+}
+ 
+/* ── Ícone arredondado — escondido no desktop ── */
+.login__mobile-icon {
+  display: none;
+}
+ 
+/* ════════════════════════════════════════════════════════
+   MOBILE — até 600px
+════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+ 
+  /* ── Body ── */
+  body {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0e0c;
+  }
+ 
+  /* ── Nav mobile ── */
+  .login__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    width: 100%;
+    background-color: #0f0e0c;
+    border-bottom: 1px solid #1b1b1b;
+  }
+ 
+  .login__nav-logo img {
+    width: 85px;
+    height: auto;
+  }
+ 
+  .login__nav-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+ 
+  /* ── Container principal ── */
+  .login {
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    background-color: #0f0e0c;
+    gap: 0;
+  }
+ 
+  /* ── Painel esquerdo — some no mobile ── */
+  .login__brand {
+    display: none;
+  }
+ 
+  /* ── Painel direito — ocupa tudo ── */
+  .login__form-wrapper {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+  }
+ 
+  /* ── Formulário ── */
+  .login__form {
+    width: 100%;
+    gap: 32px;
+  }
+ 
+  /* ── Ícone arredondado ── */
+  .login__mobile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+ 
+    img {
+      width: 80px;
+      height: 80px;
+      padding: 16px;
+      background-color: #D6BD77;
+      border-radius: 20px;
+      object-fit: contain;
+    }
+  }
+ 
+  /* ── Título ── */
+  .login__title {
+    text-align: center;
+    gap: 8px;
+ 
+    h1 {
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+ 
+    p {
+      font-size: 14px;
+    }
+  }
+ 
+  /* ── Inputs ── */
+  .login__inputs {
+    gap: 16px;
+  }
+ 
+  .login__input {
+    width: 100%;
+    height: 60px;
+    border-radius: 16px;
+  }
+ 
+  /* ── Ações ── */
+  .login__actions {
+    gap: 16px;
+  }
+ 
+  .login__btn {
+    width: 100%;
+    height: 64px;
+    border-radius: 16px;
+    font-size: 18px;
+  }
+ 
+  .login__register {
+    font-size: 14px;
+    text-align: center;
+  }
+ 
+} /* fim mobile */
+ 
+/* ════════════════════════════════════════════════════════
+   TABLET — 601px até 1020px
+════════════════════════════════════════════════════════ */
+@media (min-width: 601px) and (max-width: 1020px) {
+ 
+  /* ── Body ── */
+  body {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0e0c;
+  }
+ 
+  /* ── Nav mobile ── */
+  .login__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 26px;
+    width: 100%;
+    background-color: #0f0e0c;
+    border-bottom: 1px solid #1b1b1b;
+  }
+ 
+  .login__nav-logo img {
+    width: 85px;
+    height: auto;
+  }
+ 
+  .login__nav-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+ 
+  /* ── Container principal ── */
+  .login {
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    background-color: #0f0e0c;
+    gap: 0;
+  }
+ 
+  /* ── Painel esquerdo — some no tablet ── */
+  .login__brand {
+    display: none;
+  }
+ 
+  /* ── Painel direito — ocupa tudo ── */
+  .login__form-wrapper {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+  }
+ 
+  /* ── Formulário ── */
+  .login__form {
+    width: 100%;
+    max-width: 480px;
+    gap: 36px;
+  }
+ 
+  /* ── Ícone arredondado ── */
+  .login__mobile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+ 
+    img {
+      width: 96px;
+      height: 96px;
+      padding: 20px;
+      background-color: #D6BD77;
+      border-radius: 24px;
+      object-fit: contain;
+    }
+  }
+ 
+  /* ── Título ── */
+  .login__title {
+    text-align: center;
+    gap: 8px;
+ 
+    h1 {
+      font-size: 40px;
+      letter-spacing: -2px;
+    }
+ 
+    p {
+      font-size: 16px;
+    }
+  }
+ 
+  /* ── Inputs ── */
+  .login__inputs {
+    gap: 18px;
+  }
+ 
+  .login__input {
+    width: 100%;
+    height: 64px;
+    border-radius: 16px;
+  }
+ 
+  /* ── Ações ── */
+  .login__actions {
+    gap: 20px;
+  }
+ 
+  .login__btn {
+    width: 100%;
+    height: 70px;
+    border-radius: 16px;
+    font-size: 20px;
+  }
+ 
+  .login__register {
+    font-size: 16px;
+    text-align: center;
+  }
+ 
+} /* fim tablet */
+ 
