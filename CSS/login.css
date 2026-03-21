@@ -65,7 +65,6 @@
   font-family: "Sora", sans-serif;
 }
 
-
 /* ════════════════════════════════════════════════════════
    BODY
 ════════════════════════════════════════════════════════ */
@@ -75,6 +74,37 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ════════════════════════════════════════════════════════
+   NAV MOBILE — escondida no desktop
+════════════════════════════════════════════════════════ */
+.login__nav {
+  display: none;
+}
+
+.login__nav-mobile {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown começa fechado */
+#loginDropMobile {
+  display: none;
+}
+
+#loginDropMobile.open {
+  display: flex;
+}
+
+/* ── Ícone arredondado e título mobile — escondidos no desktop ── */
+.login__mobile-icon {
+  display: none;
+}
+
+.login__title_mobile {
+  display: none;
 }
 
 /* ════════════════════════════════════════════════════════
@@ -291,13 +321,13 @@ body {
 /* ── 1600px ── */
 @media (max-width: 1600px) {
   :root {
-    --login-height:     820px;
-    --title-size:       46px;
-    --subtitle-size:    20px;
-    --form-width:       500px;
-    --btn-height:       72px;
-    --btn-font-size:    22px;
-    --input-height:     64px;
+    --login-height:   820px;
+    --title-size:     46px;
+    --subtitle-size:  20px;
+    --form-width:     500px;
+    --btn-height:     72px;
+    --btn-font-size:  22px;
+    --input-height:   64px;
   }
 }
 
@@ -384,41 +414,18 @@ body {
 }
 
 /* ════════════════════════════════════════════════════════
-   login-mobile.css — Valhalla Bebidas
-   Mobile: até 600px
-   Tablet: 601px – 1020px
-════════════════════════════════════════════════════════ */
- 
-/* ════════════════════════════════════════════════════════
-   NAV MOBILE — escondida no desktop
-════════════════════════════════════════════════════════ */
-.login__nav {
-  display: none; /* desktop não vê */
-}
-
-.login__title_mobile {
-  display: none;
-}
- 
-/* ── Ícone arredondado — escondido no desktop ── */
-.login__mobile-icon {
-  display: none;
-}
- 
-/* ════════════════════════════════════════════════════════
    MOBILE — até 600px
 ════════════════════════════════════════════════════════ */
 @media (max-width: 600px) {
- 
+
   /* ── Body ── */
   body {
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #0f0e0c;
   }
- 
+
   /* ── Nav mobile ── */
   .login__nav {
     display: flex;
@@ -426,15 +433,17 @@ body {
     justify-content: space-between;
     padding: 0 24px;
     width: 100%;
-    background-color: #0f0e0c;
+    height: 80px;
+    background-color: var(--color-bg);
     border-bottom: 1px solid #1b1b1b;
+    flex-shrink: 0;
   }
- 
+
   .login__nav-logo img {
     width: 85px;
     height: auto;
   }
- 
+
   .login__nav-menu {
     background: none;
     border: none;
@@ -443,13 +452,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
- 
+
     img {
       width: 50px;
       height: 50px;
     }
   }
- 
+
   /* ── Container principal ── */
   .login {
     flex: 1;
@@ -457,124 +466,141 @@ body {
     height: auto;
     padding: 0;
     border-radius: 0;
-    background-color: #0f0e0c;
+    background-color: var(--color-bg);
     gap: 0;
   }
- 
+
   /* ── Painel esquerdo — some no mobile ── */
   .login__brand {
     display: none;
   }
- 
-  /* ── Painel direito — ocupa tudo ── */
-  .login__form-wrapper {
-    width: 100%;
-    height: auto;
-    flex: 1;
+
+  /* ── Título mobile — aparece acima do form ── */
+  .login__title_mobile {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 40px 24px;
+    text-align: center;
+    gap: 8px;
+    padding: 40px 24px 0;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--color-white);
+
+      span {
+        color: var(--color-gold);
+      }
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--color-border);
+    }
   }
- 
-  /* ── Formulário ── */
-  .login__form {
-    width: 100%;
-    gap: 32px;
-  }
- 
+
   /* ── Ícone arredondado ── */
   .login__mobile-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 8px;
- 
+
     img {
       width: 80px;
       height: 80px;
       padding: 16px;
-      background-color: #D6BD77;
+      background-color: var(--color-gold);
       border-radius: 20px;
       object-fit: contain;
     }
   }
- 
-  /* ── Título ── */
-  .login__title {
-    text-align: center;
-    gap: 8px;
- 
-    h1 {
-      font-size: 32px;
-      letter-spacing: -1px;
-    }
- 
-    p {
-      font-size: 14px;
-    }
+
+  /* ── Painel direito — ocupa tudo ── */
+  .login__form-wrapper {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 24px 40px;
   }
- 
+
+  /* ── Formulário — esconde título (já está no mobile-title) ── */
+  .login__form {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .login__title {
+    display: none; /* título mobile já exibido acima */
+  }
+
   /* ── Inputs ── */
   .login__inputs {
     gap: 16px;
   }
- 
+
   .login__input {
     width: 100%;
     height: 60px;
     border-radius: 16px;
   }
- 
+
   /* ── Ações ── */
   .login__actions {
     gap: 16px;
   }
- 
+
   .login__btn {
     width: 100%;
     height: 64px;
     border-radius: 16px;
     font-size: 18px;
   }
- 
+
   .login__register {
     font-size: 14px;
     text-align: center;
   }
- 
+
 } /* fim mobile */
- 
+
 /* ════════════════════════════════════════════════════════
    TABLET — 601px até 1020px
 ════════════════════════════════════════════════════════ */
 @media (min-width: 601px) and (max-width: 1020px) {
- 
+
   /* ── Body ── */
   body {
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #0f0e0c;
   }
- 
-  /* ── Nav mobile ── */
+
+
+  /* ── Nav tablet ── */
   .login__nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 26px;
+    padding: 0 32px;
     width: 100%;
-    background-color: #0f0e0c;
+    height: 80px;
+    background-color: var(--color-bg);
     border-bottom: 1px solid #1b1b1b;
+    flex-shrink: 0;
   }
- 
+
   .login__nav-logo img {
     width: 85px;
     height: auto;
   }
- 
+
   .login__nav-menu {
     background: none;
     border: none;
@@ -583,13 +609,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
- 
+
     img {
       width: 50px;
       height: 50px;
     }
   }
- 
+
   /* ── Container principal ── */
   .login {
     flex: 1;
@@ -597,92 +623,162 @@ body {
     height: auto;
     padding: 0;
     border-radius: 0;
-    background-color: #0f0e0c;
+    background-color: var(--color-bg);
     gap: 0;
   }
- 
+
   /* ── Painel esquerdo — some no tablet ── */
   .login__brand {
     display: none;
   }
- 
-  /* ── Painel direito — ocupa tudo ── */
-  .login__form-wrapper {
-    width: 100%;
-    height: auto;
-    flex: 1;
+
+  /* ── Título mobile ── */
+  .login__title_mobile {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 60px 40px;
+    text-align: center;
+    gap: 8px;
+    padding: 48px 40px 0;
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -2px;
+      color: var(--color-white);
+
+      span {
+        color: var(--color-gold);
+      }
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--color-border);
+    }
   }
- 
-  /* ── Formulário ── */
-  .login__form {
-    width: 100%;
-    max-width: 480px;
-    gap: 36px;
-  }
- 
+
   /* ── Ícone arredondado ── */
   .login__mobile-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 8px;
- 
+
     img {
       width: 96px;
       height: 96px;
       padding: 20px;
-      background-color: #D6BD77;
+      background-color: var(--color-gold);
       border-radius: 24px;
       object-fit: contain;
     }
   }
- 
-  /* ── Título ── */
-  .login__title {
-    text-align: center;
-    gap: 8px;
- 
-    h1 {
-      font-size: 40px;
-      letter-spacing: -2px;
-    }
- 
-    p {
-      font-size: 16px;
-    }
+
+  /* ── Painel direito — ocupa tudo ── */
+  .login__form-wrapper {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 40px 60px;
   }
- 
+
+  /* ── Formulário ── */
+  .login__form {
+    width: 100%;
+    max-width: 480px;
+    gap: 36px;
+  }
+
+  .login__title {
+    display: none; /* título mobile já exibido acima */
+  }
+
   /* ── Inputs ── */
   .login__inputs {
     gap: 18px;
   }
- 
+
   .login__input {
     width: 100%;
     height: 64px;
     border-radius: 16px;
   }
- 
+
   /* ── Ações ── */
   .login__actions {
     gap: 20px;
   }
- 
+
   .login__btn {
     width: 100%;
     height: 70px;
     border-radius: 16px;
     font-size: 20px;
   }
- 
+
   .login__register {
     font-size: 16px;
     text-align: center;
   }
- 
-} /* fim tablet */
- 
+
+}
+
+/* ════════════════════════════════════════════════════════
+   DROPDOWN — Nav mobile login
+════════════════════════════════════════════════════════ */
+.nav__dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 220px;
+  background-color: #1b1b1b;
+  border: 1px solid #616161;
+  border-radius: 12px;
+  padding: 8px;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 200;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav__dropdown.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.nav__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav__dropdown-item:hover {
+  background-color: #232320;
+  color: #D6BD77;
+}
+
+.nav__dropdown-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}

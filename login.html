@@ -25,9 +25,28 @@
       <a href="index.html" class="login__nav-logo">
         <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
       </a>
-      <button type="button" class="login__nav-menu" aria-label="Menu">
-        <img src="./img/Icons/menu.svg" alt="" />
-      </button>
+    
+      <!-- Wrapper com position relative para o dropdown -->
+      <div class="login__nav-mobile">
+        <button type="button" class="login__nav-menu" id="loginMenuBtn" aria-label="Menu">
+          <img src="./img/Icons/menu.svg" alt="" />
+        </button>
+    
+        <div class="nav__dropdown nav__dropdown--mobile" id="loginDropMobile">
+          <a href="login.html" class="nav__dropdown-item">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/arrow.svg" alt="" />
+            </span>
+            <span>Login</span>
+          </a>
+          <a href="cadastro.html" class="nav__dropdown-item">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/user.svg" alt="" />
+            </span>
+            <span>Cadastrar-se</span>
+          </a>
+        </div>
+      </div>
     </nav>
 
     <div class="login__title_mobile">
@@ -91,6 +110,7 @@
                 required
               />
             </label>
+
           </div>
 
           <!-- Ações -->
@@ -105,6 +125,8 @@
       </div>
     </div>
 
-    <script src="./JS/script.js"></script>
+    <script src="./JS/auth.js"></script>
+    <script src="./JS/login.js"></script>
+
   </body>
 </html>

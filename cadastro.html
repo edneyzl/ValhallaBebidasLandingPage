@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Conta - Valhalla Bebidas</title>
+    <link
+      rel="shortcut icon"
+      href="./img/Marcas/Valhalla.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./CSS/cadastro.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- ═══════════ NAV ═══════════ -->
+    <nav class="cadastro__nav">
+      <a href="/index.html" class="cadastro__nav-logo">
+        <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+      </a>
+
+      <div class="cadastro__nav-mobile">
+        <button
+          type="button"
+          class="cadastro__nav-menu"
+          id="cadastroMenuBtn"
+          aria-label="Menu"
+        >
+          <img src="./img/Icons/menu.svg" alt="" />
+        </button>
+
+        <div class="nav__dropdown" id="cadastroDropMobile">
+          <a href="login.html" class="nav__dropdown-item">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/arrow.svg" alt="" />
+            </span>
+            <span>Login</span>
+          </a>
+          <a href="cadastro.html" class="nav__dropdown-item">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/user.svg" alt="" />
+            </span>
+            <span>Cadastrar-se</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════ CADASTRO ═══════════ -->
+    <div class="cadastro">
+      <!-- ── Header ── -->
+      <div class="cadastro__header">
+        <a href="/index.html" class="cadastro__icon">
+          <img src="./img/Marcas/ValhallaBlack.svg" alt="Valhalla Bebidas" />
+        </a>
+        <h1>Crie sua conta</h1>
+        <p>Preencha os dados para se tornar um parceiro.</p>
+      </div>
+
+      <!-- ── Form ── -->
+      <form class="cadastro__form" id="formCadastro">
+        <!-- ═══════════ DADOS PESSOAIS ═══════════ -->
+        <div class="cadastro__section">
+          <h2 class="cadastro__section-title">Dados Pessoais</h2>
+
+          <div class="cadastro__field">
+            <label for="nome">Nome completo</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Digite seu nome / empresa"
+              autocomplete="name"
+              required
+            />
+            <p class="cadastro__input-erro" id="erroNome"></p>
+          </div>
+
+          <div class="cadastro__field">
+            <label for="dataNascimento">Data de nascimento</label>
+            <input
+              type="text"
+              id="dataNascimento"
+              name="dataNascimento"
+              placeholder="DD/MM/YYYY"
+              maxlength="10"
+              required
+            />
+            <p class="cadastro__input-erro" id="erroDataNascimento"></p>
+          </div>
+
+          <div class="cadastro__field">
+            <label for="documento">Documento</label>
+            <input
+              type="text"
+              id="documento"
+              name="documento"
+              placeholder="CPF / CNPJ"
+              maxlength="18"
+              required
+            />
+            <p class="cadastro__input-erro" id="erroDocumento"></p>
+          </div>
+
+          <div class="cadastro__field">
+            <label for="telefone">Telefone</label>
+            <input
+              type="text"
+              id="telefone"
+              name="telefone"
+              placeholder="(00) 00000-0000"
+              maxlength="15"
+              required
+            />
+            <p class="cadastro__input-erro" id="erroTelefone"></p>
+          </div>
+
+          <div class="cadastro__field">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Digite seu email"
+              autocomplete="email"
+              required
+            />
+            <p class="cadastro__input-erro" id="erroEmail"></p>
+          </div>
+        </div>
+
+        <!-- ═══════════ PALAVRA-CHAVE ═══════════ -->
+        <div class="cadastro__section">
+          <h2 class="cadastro__section-title">Palavra-Chave</h2>
+
+          <div class="cadastro__row">
+            <div class="cadastro__field">
+              <label for="senha">Senha</label>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                autocomplete="new-password"
+                required
+              />
+              <p class="cadastro__input-erro" id="erroSenha"></p>
+            </div>
+
+            <div class="cadastro__field">
+              <label for="confirmarSenha">Confirmar Senha</label>
+              <input
+                type="password"
+                id="confirmarSenha"
+                name="confirmarSenha"
+                autocomplete="new-password"
+                required
+              />
+              <p class="cadastro__input-erro" id="erroConfirmarSenha"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ ENDEREÇO ═══════════ -->
+        <div class="cadastro__section">
+          <h2 class="cadastro__section-title">Endereço</h2>
+
+          <div class="cadastro__row cadastro__row--7-3">
+            <div class="cadastro__field">
+              <label for="logradouro">Logradouro</label>
+              <input
+                type="text"
+                id="logradouro"
+                name="logradouro"
+                autocomplete="street-address"
+                required
+              />
+              <p class="cadastro__input-erro" id="erroLogradouro"></p>
+            </div>
+
+            <div class="cadastro__field">
+              <label for="cep">CEP</label>
+              <input
+                type="text"
+                id="cep"
+                name="cep"
+                placeholder="00000-000"
+                maxlength="9"
+                required
+              />
+              <p class="cadastro__input-erro" id="erroCep"></p>
+            </div>
+          </div>
+
+          <div class="cadastro__row cadastro__row--3-col">
+            <div class="cadastro__field">
+              <label for="numero">N.º</label>
+              <input
+                type="text"
+                id="numero"
+                name="numero"
+                maxlength="10"
+                required
+              />
+              <p class="cadastro__input-erro" id="erroNumero"></p>
+            </div>
+
+            <div class="cadastro__field">
+              <label for="complemento">Complemento</label>
+              <input
+                type="text"
+                id="complemento"
+                name="complemento"
+                maxlength="100"
+              />
+            </div>
+
+            <div class="cadastro__field">
+              <label for="bairro">Bairro</label>
+              <input type="text" id="bairro" name="bairro" required />
+              <p class="cadastro__input-erro" id="erroBairro"></p>
+            </div>
+          </div>
+
+          <div class="cadastro__row cadastro__row--7-3">
+            <div class="cadastro__field">
+              <label for="cidade">Cidade</label>
+              <input
+                type="text"
+                id="cidade"
+                name="cidade"
+                autocomplete="address-level2"
+                required
+              />
+              <p class="cadastro__input-erro" id="erroCidade"></p>
+            </div>
+
+            <div class="cadastro__field">
+              <label for="estado">Estado</label>
+              <input
+                type="text"
+                id="estado"
+                name="estado"
+                placeholder="UF"
+                maxlength="2"
+                autocomplete="address-level1"
+                required
+              />
+              <p class="cadastro__input-erro" id="erroEstado"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ AÇÕES ═══════════ -->
+        <div class="cadastro__actions">
+          <button type="submit" class="cadastro__btn">Criar conta</button>
+          <p class="cadastro__login">
+            Já tem uma conta?
+            <a href="login.html">Login</a>
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <!-- ═══════════ TOAST — Feedback ═══════════ -->
+    <div class="toast" id="toast">
+      <div class="toast__icon">✓</div>
+      <div class="toast__content">
+        <p class="toast__title">Conta criada com sucesso!</p>
+        <p class="toast__desc">Redirecionando para a página inicial...</p>
+      </div>
+    </div>
+
+    <script src="./JS/auth.js"></script>
+    <script src="./JS/cadastro.js"></script>
+  </body>
+</html>
