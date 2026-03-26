@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo - Valhalla Bebidas</title>
+  <link rel="shortcut icon" href="./img/Marcas/Valhalla.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="./CSS/homepage.css" />
+  <link rel="stylesheet" href="./CSS/catalogo.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet" />
+</head>
+
+<body id="body">
+
+  <!-- ═══════════ CART OVERLAY ═══════════ -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- ═══════════ CART SIDEBAR ═══════════ -->
+  <aside class="cart" id="cart">
+    <div class="cart__header">
+      <h2>Carrinho</h2>
+      <button type="button" class="cart__close" id="cartClose">
+        <img src="./img/Icons/close.svg" alt="Fechar" />
+      </button>
+    </div>
+    <div class="cart__items" id="cartItems"></div>
+    <div class="cart__footer">
+      <div class="cart__total">
+        <span>Total</span>
+        <span id="cartTotal">R$ 0,00</span>
+      </div>
+      <a href="carrinho.html" class="cart__btn">FINALIZAR PEDIDO</a>
+    </div>
+  </aside>
+
+  <!-- ═══════════ HERO (NAV + IMAGEM) ═══════════ -->
+  <header class="catalogoHero">
+    <!-- ═══════════ NAV ═══════════ -->
+    <nav class="nav" id="nav">
+      <div class="nav__left">
+        <a href="index.html" class="nav__logo">
+          <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+        </a>
+
+        <div class="nav__links">
+          <a href="index.html">Início</a>
+          <a href="index.html">Sobre</a>
+          <a href="#body">Catálogo</a>
+          <a href="#footer">Contato</a>
+        </div>
+      </div>
+
+      <!-- ── Desktop direito ── -->
+      <div class="nav__right">
+
+        <!-- Visitante -->
+        <div class="nav__guest">
+          <a href="login.html" class="nav__btn nav__btn--login">Login</a>
+          <a href="cadastro.html" class="nav__btn nav__btn--register">Cadastrar-se</a>
+        </div>
+
+        <!-- Logado -->
+        <div class="nav__user" id="nav-user">
+          <button type="button" class="nav__user-btn" id="userBtn">
+            <span class="nav__user-name" id="userName">Usuário</span>
+            <img src="./img/Icons/arrowDown.svg" alt="" />
+          </button>
+
+          <div class="nav__dropdown nav__dropdown--desktop" id="dropdown-desktop">
+            <a href="compras.html" class="nav__dropdown-item">
+              <span class="nav__dropdown-icon">
+                <img src="./img/Icons/market.svg" alt="" />
+              </span>
+              <span>Minhas Compras</span>
+            </a>
+
+            <div class="nav__dropdown-divider"></div>
+
+            <a href="#" class="nav__dropdown-item nav__dropdown-item--logout" id="btn-logout-desktop">
+              <span class="nav__dropdown-icon">
+                <img src="./img/Icons/logout.svg" alt="" />
+              </span>
+              <span>Logout</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── Carrinho — fora do nav__right, visível em todos os breakpoints ── -->
+      <button type="button" class="nav__cart" id="cartBtn">
+        <img src="./img/Icons/cart.svg" alt="Carrinho" />
+        <span class="nav__cart-count" id="cartCount">0</span>
+      </button>
+
+      <!-- ── Mobile ── -->
+      <div class="nav__mobile">
+        <button type="button" class="nav__mobile-btn" id="menuBtn" aria-label="Abrir menu">
+          <img src="./img/Icons/menu.svg" alt="" />
+        </button>
+
+        <div class="nav__dropdown nav__dropdown--mobile" id="dropdown-mobile">
+
+          <div class="nav__dropdown-user dropdown-auth">
+            <span id="userNameMobile">Usuário</span>
+          </div>
+
+          <div class="nav__dropdown-divider dropdown-auth"></div>
+
+          <!-- Só logado vê -->
+          <a href="compras.html" class="nav__dropdown-item dropdown-auth">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/market.svg" alt="" />
+            </span>
+            <span>Minhas Compras</span>
+          </a>
+
+          <div class="nav__dropdown-divider dropdown-auth"></div>
+
+          <!-- Só visitante vê -->
+          <a href="login.html" class="nav__dropdown-item dropdown-guest">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/arrow.svg" alt="" />
+            </span>
+            <span>Login</span>
+          </a>
+
+          <a href="cadastro.html" class="nav__dropdown-item dropdown-guest">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/user.svg" alt="" />
+            </span>
+            <span>Cadastrar-se</span>
+          </a>
+
+          <div class="nav__dropdown-divider dropdown-guest"></div>
+
+          <a href="#" class="nav__dropdown-item nav__dropdown-item--logout dropdown-auth" id="btn-logout-mobile">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/logout.svg" alt="" />
+            </span>
+            <span>Logout</span>
+          </a>
+
+        </div>
+      </div>
+    </nav>
+
+    <section class="imgSection">
+      <img src="./img/categoriaPhoto.jpg" alt="Imagem Valhalla">
+    </section>
+
+  </header>
+
+  <section class="category">
+    <div class="filter-container">
+      <div class="filter">
+        <h3>CATEGORIAS</h3>
+        <!-- Ajuste semântico: transformar cards em <ul> -->
+        <ul class="cards">
+          <li class="catalogo_filter-btn-active">
+            <button>Todos</button>
+          </li>
+          <li class="catalogo_filter-btn">
+            <button>Cervejas</button>
+          </li>
+          <li class="catalogo_filter-btn">
+            <button>Energéticos</button>
+          </li>
+          <li class="catalogo_filter-btn">
+            <button>Refrigerantes</button>
+          </li>
+          <li class="catalogo_filter-btn">
+            <button>Sucos</button>
+          </li>
+          <li class="catalogo_filter-btn">
+            <button>Águas</button>
+          </li>
+        </ul>
+
+        <h3>ORDENAR POR</h3>
+        <ul class="cards">
+          <li class="catalogo_filter-btn-active">
+            <button>Relevância</button>
+          </li>
+          <li class="catalogo_filter-btn">
+            <button>Menor preço</button>
+          </li>
+          <li class="catalogo_filter-btn">
+            <button>Maior preço</button>
+          </li>
+          <li class="catalogo_filter-btn">
+            <button>Nome A-Z</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="products-container">
+      <div class="product__title">
+        <div>
+          <h1>Catálogo</h1>
+          <p>0 produtos encontrados</p>
+        </div>
+
+        <label for="search-input">
+          <a href="#">
+            <img src="./img/Icons/Glass.svg" alt="Buscar">
+          </a>
+          <input type="text" id="search-input" placeholder="Buscar produtos">
+        </label>
+      </div>
+
+      <!-- ==========================================
+           NOVA ESTRUTURA GRID (Sem .line e usando <ul>)
+           ========================================== -->
+      <ul class="products">
+        
+        <li class="product-card">
+          <div class="product-img">
+            <img src="./img/ExemploBebida.png" alt="Bebida X">
+          </div>
+          <div>
+            <h1>Bebida X</h1>
+            <p>Categoria</p>
+          </div>
+          <h2>R$40,99</h2>
+          <div class="buttons">
+            <a href="#" class="market-button">Adicionar ao carrinho</a>
+            <a href="#" class="details-button">Ver detalhes</a>
+          </div>
+        </li>
+
+        <li class="product-card">
+          <div class="product-img">
+            <img src="./img/ExemploBebida.png" alt="Bebida X">
+          </div>
+          <div>
+            <h1>Bebida X</h1>
+            <p>Categoria</p>
+          </div>
+          <h2>R$40,99</h2>
+          <div class="buttons">
+            <a href="#" class="market-button">Adicionar ao carrinho</a>
+            <a href="#" class="details-button">Ver detalhes</a>
+          </div>
+        </li>
+
+        <li class="product-card">
+          <div class="product-img">
+            <img src="./img/ExemploBebida.png" alt="Bebida X">
+          </div>
+          <div>
+            <h1>Bebida X</h1>
+            <p>Categoria</p>
+          </div>
+          <h2>R$40,99</h2>
+          <div class="buttons">
+            <a href="#" class="market-button">Adicionar ao carrinho</a>
+            <a href="#" class="details-button">Ver detalhes</a>
+          </div>
+        </li>
+
+        <li class="product-card">
+          <div class="product-img">
+            <img src="./img/ExemploBebida.png" alt="Bebida X">
+          </div>
+          <div>
+            <h1>Bebida X</h1>
+            <p>Categoria</p>
+          </div>
+          <h2>R$40,99</h2>
+          <div class="buttons">
+            <a href="#" class="market-button">Adicionar ao carrinho</a>
+            <a href="#" class="details-button">Ver detalhes</a>
+          </div>
+        </li>
+
+        <li class="product-card">
+          <div class="product-img">
+            <img src="./img/ExemploBebida.png" alt="Bebida X">
+          </div>
+          <div>
+            <h1>Bebida X</h1>
+            <p>Categoria</p>
+          </div>
+          <h2>R$40,99</h2>
+          <div class="buttons">
+            <a href="#" class="market-button">Adicionar ao carrinho</a>
+            <a href="#" class="details-button">Ver detalhes</a>
+          </div>
+        </li>
+
+        <li class="product-card">
+          <div class="product-img">
+            <img src="./img/ExemploBebida.png" alt="Bebida X">
+          </div>
+          <div>
+            <h1>Bebida X</h1>
+            <p>Categoria</p>
+          </div>
+          <h2>R$40,99</h2>
+          <div class="buttons">
+            <a href="#" class="market-button">Adicionar ao carrinho</a>
+            <a href="#" class="details-button">Ver detalhes</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer" id="footer">
+    <div class="footer__content">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+        </a>
+        <p class="footer__desc">Distribuição premium de bebidas para negócios que exigem o melhor.</p>
+      </div>
+      <nav class="footer__nav">
+        <h4 class="footer__nav-title">Navegação</h4>
+        <ul class="footer__nav-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="index.html">Sobre</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="index.html#footer">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="footer__social">
+        <h4 class="footer__nav-title">Redes Sociais</h4>
+        <div class="footer__social-icons">
+          <a href="#" class="footer__social-btn" aria-label="Instagram">
+            <img src="./img/Icons/Instagram.svg" alt="" />
+          </a>
+          <a href="#" class="footer__social-btn" aria-label="WhatsApp">
+            <img src="./img/Icons/Whatsapp.svg" alt="" />
+          </a>
+          <a href="#" class="footer__social-btn" aria-label="LinkedIn">
+            <img src="./img/Icons/Linkedin.svg" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Valhalla Bebidas. Todos os direitos reservados.</p>
+      <p>Desenvolvido por <span>Tecnomancy</span></p>
+    </div>
+  </footer>
+
+  <script src="./JS/auth.js"></script>
+  <script src="./JS/nav.js"></script>
+  <script src="./JS/cart.js"></script>
+  <script src="./JS/catalogo.js"></script>
+
+</body>
+
+</html>
