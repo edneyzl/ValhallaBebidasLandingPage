@@ -252,6 +252,12 @@ cd ValhallaBebidas
 ### Login
 ![Login](./img/LoginPage.png)
 
+### Cadastro
+![Cadastro](./img/CadastroPage.png)
+
+### Catálogo
+![Catalogo](./img/CatalogoPage.png)
+
 ---
 
 ## 👨‍💻 Autor
