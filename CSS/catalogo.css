@@ -34,7 +34,7 @@
     background-color: var(--color-bg-main);
     color: var(--color-text-main);
     padding-top: 0;
-    overflow-x: hidden; /* Evita quebras de layout horizontal */
+    overflow-x: hidden;
   }
   
   li {
@@ -51,19 +51,331 @@
     cursor: pointer;
     font-family: inherit;
   }
+
+
+
+/* ════════════════════════════════════════════════════════
+ NAV
+════════════════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  height: var(--nav-height);
+  padding: 0 var(--nav-padding-x);
+  display: flex;
+  justify-content: space-between;
+  background-color: #0f0e0c;
+  border-bottom: 2px solid var(--color-border);
+}
+
+/* ── Lado esquerdo (logo + links) ── */
+.nav__left {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--nav-gap-logo-links);
+}
+
+/* Logo */
+.nav__logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Links de navegação */
+.nav__links {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: var(--nav-links-gap);
+
+  a {
+    text-decoration: none;
+    color: var(--color-text-nav);
+    font-size: var(--link-font-size);
+    font-weight: var(--link-font-weight);
+    border-bottom: 1px solid transparent;
+    transition:
+      border-bottom-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  a:hover {
+    border-bottom-color: var(--color-gold);
+  }
+}
+
+/* ── Lado direito (botões) ── */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Base dos botões nav */
+.nav__btn {
+  height: var(--btn-height);
+  padding: 0 10px;
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Botão Login */
+.nav__btn--login {
+  width: var(--btn-login-width);
+  border: 1px solid var(--color-border-btn);
+  background-color: var(--color-surface);
+  color: var(--color-white);
+}
+
+.nav__btn--login:hover {
+  border-color: var(--color-gold);
+  background-color: #232320;
+}
+
+/* Botão Cadastrar-se */
+.nav__btn--register {
+  width: var(--btn-register-width);
+  border: none;
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+.nav__btn--register:hover {
+  background-color: var(--color-gold-hover);
+}
+
+/* ════════════════════════════════════════════════════════
+   NAV — Desktop + Mobile + Dropdown
+════════════════════════════════════════════════════════ */
+
+/* ── Controle visitante / logado ── */
+.nav__guest {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav__user {
+  display: none;
+  position: relative;
+}
+
+/* ── Botão do usuário logado ── */
+.nav__user-btn {
+  width: 150px;
+  background: none;
+  border: 1px solid var(--color-border-btn);
+  border-radius: var(--btn-radius);
+  height: var(--btn-height);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: 'Sora', sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav__user-btn:hover {
+  border-color: var(--color-gold);
+  background-color: #232320;
+}
+
+.nav__user-name {
+  color: var(--color-white);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+}
+
+.nav__user-chevron {
+  color: var(--color-gold);
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.nav__user-btn.open .nav__user-chevron {
+  transform: rotate(180deg);
+}
+
+/* ════════════════════════════════════════════════════════
+   DROPDOWN — base compartilhada
+════════════════════════════════════════════════════════ */
+.nav__dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 220px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--about-card-border);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 200;
+
+  /* Estado inicial — fechado */
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Dropdown aberto */
+.nav__dropdown.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* ── Item ── */
+.nav__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 15px;
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav__dropdown-item:hover {
+  background-color: #232320;
+  color: var(--color-gold);
+}
+
+/* ── Ícone ── */
+.nav__dropdown-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ── Divider ── */
+.nav__dropdown-divider {
+  height: 1px;
+  background-color: var(--about-card-border);
+  margin: 4px 8px;
+}
+
+/* ── Logout ── */
+.nav__dropdown-item--logout:hover {
+  background-color: rgba(180, 30, 30, 0.15);
+  color: #e05c5c;
+}
+
+/* ════════════════════════════════════════════════════════
+   MOBILE — ícone hambúrguer
+════════════════════════════════════════════════════════ */
+
+/* Wrapper do menu mobile — escondido no desktop */
+.nav__mobile {
+  display: none;
+  position: relative;
+  align-items: center;
+}
+
+/* Botão do ícone */
+.nav__mobile-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.nav__mobile-btn img {
+  width: 50px;
+  height: 50px;
+}
+
+.nav__dropdown-user {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 10px;
+
+  span {
+    color: var(--color-gold);
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVIDADE
+════════════════════════════════════════════════════════ */
+
+/* Desktop — mostra nav__right, esconde mobile */
+@media (min-width: 901px) {
+  .nav__mobile {
+    display: none;
+  }
+}
+
+/* Mobile / tablet — esconde nav__right e links, mostra menu */
+@media (max-width: 800px) {
+  .nav__right {
+    display: none;
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .nav__mobile {
+    display: flex;
+  }
+}
   
   /* ==========================================================================
      HERO E IMAGEM
      ========================================================================== */
   .catalogoHero {
-    width: 100%;
+    padding-top: var(--nav-height);
   }
   
   .catalogoHero .nav {
-    position: relative;
-    height: var(--nav-height);
-    background-color: var(--color-bg-main);
-    border-bottom: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   }
   
   .imgSection {
