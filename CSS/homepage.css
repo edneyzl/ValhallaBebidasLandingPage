@@ -1506,7 +1506,7 @@ body {
   flex-direction: column;
   padding: var(--category-padding-y) var(--category-padding-x);
   gap: var(--category-gap);
-  background-color: var(--category-bg);
+  background-image: var(--category-bg);
 }
 
 /* ── Cabeçalho ── */
@@ -1613,13 +1613,25 @@ body {
   border-radius: var(--card-radius);
   padding-top: 30px;
   border: 1px solid #616161;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease; /* Adicionei transform para o hover */
   cursor: pointer;
+
+
+  /* ── NOVAS PROPRIEDADES DE BACKGROUND ── */
+  background-size: cover;          /* Faz a imagem preencher todo o espaço sem achatar */
+  background-position: center;     /* Centraliza a imagem */
+  background-repeat: no-repeat;    /* Evita que a imagem se repita */
+  overflow: hidden;                /* Impede que a imagem vaze pelas bordas arredondadas */
+  
+  /* Opcional: Um leve gradiente escuro por cima da imagem para dar contraste com a badge */
+  background-color: var(--color-bg); 
 }
 
 .category__card:hover {
   border-color: var(--color-gold);
+  transform: translateY(-5px); /* Efeito extra opcional de flutuar o card */
 }
+
 
 /* ── Badge ── */
 .category__card-badge {
