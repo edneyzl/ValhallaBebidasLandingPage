@@ -8,12 +8,13 @@
     <link rel="shortcut icon" href="./img/Marcas/Valhalla.svg" type="image/x-icon" />
     <link rel="stylesheet" href="./CSS/homepage.css" />
     <link rel="stylesheet" href="./CSS/produto.css" />
+    <link rel="stylesheet" href="./CSS/page-animations.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet" />
 </head>
 
-<body>
+<body data-page="produto">
 
     <!-- ═══════════ CART OVERLAY ═══════════ -->
     <div class="cart-overlay" id="cartOverlay"></div>
@@ -121,7 +122,7 @@
     <main class="produto">
 
         <!-- ── Breadcrumb ── -->
-        <div class="produto__breadcrumb">
+        <div class="produto__breadcrumb page-anim-prep">
             <a href="catalogo.html">← Voltar ao catálogo</a>
         </div>
 
@@ -136,7 +137,7 @@
             </div>
 
             <!-- ═══ Info ═══ -->
-            <div class="produto__info">
+            <div class="produto__info page-anim-prep">
 
                 <p class="produto__categoria" id="produtoCategoria">Cervejas</p>
 
@@ -179,7 +180,7 @@
         </div>
 
         <!-- ═══ Detalhes — largura total abaixo do layout ═══ -->
-        <div class="produto__detalhes">
+        <div class="produto__detalhes page-anim-prep">
             <h3 class="produto__detalhes-title">Detalhes do produto</h3>
             <ul class="produto__detalhes-list">
                 <li>
