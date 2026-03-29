@@ -125,7 +125,7 @@
             <a href="catalogo.html">← Voltar ao catálogo</a>
         </div>
 
-        <!-- ── Layout principal ── -->
+        <!-- ── Layout principal — Imagem + Info ── -->
         <div class="produto__layout">
 
             <!-- ═══ Imagem ═══ -->
@@ -138,86 +138,67 @@
             <!-- ═══ Info ═══ -->
             <div class="produto__info">
 
-                <!-- Categoria -->
                 <p class="produto__categoria" id="produtoCategoria">Cervejas</p>
 
-                <!-- Nome -->
                 <h1 class="produto__nome" id="produtoNome">Heineken Long Neck 330ml</h1>
 
-                <!-- EAN -->
                 <p class="produto__ean" id="produtoEan">EAN: 7891149107067</p>
 
-                <!-- Divisor -->
                 <div class="produto__divider"></div>
 
-                <!-- Descrição -->
                 <p class="produto__descricao" id="produtoDescricao">
                     Cerveja de origem holandesa com sabor levemente amargo e refrescante.
                     Produzida com lúpulo selecionado e malte de alta qualidade.
                     Ideal para ocasiões especiais e consumo imediato.
                 </p>
 
-                <!-- Divisor -->
                 <div class="produto__divider"></div>
 
-                <!-- Preço -->
                 <div class="produto__preco-wrapper">
                     <span class="produto__preco-label">Preço unitário</span>
                     <p class="produto__preco" id="produtoPreco">R$ 8,50</p>
                 </div>
 
-                <!-- Quantidade + Adicionar -->
                 <div class="produto__acoes">
-
                     <div class="produto__quantidade">
                         <button type="button" class="produto__qty-btn" id="qtyMenos">−</button>
                         <span class="produto__qty-valor" id="qtyValor">1</span>
                         <button type="button" class="produto__qty-btn" id="qtyMais">+</button>
                     </div>
-
-                    <button
-                        type="button"
-                        class="produto__btn-adicionar"
-                        id="btnAdicionar"
-                    >
+                    <button type="button" class="produto__btn-adicionar" id="btnAdicionar">
                         Adicionar ao carrinho
                     </button>
-
                 </div>
 
-                <!-- Estoque -->
                 <p class="produto__estoque" id="produtoEstoque">
                     <span class="produto__estoque-dot"></span>
                     Em estoque
                 </p>
 
-                <!-- Divisor -->
-                <div class="produto__divider"></div>
-
-                <!-- Detalhes -->
-                <div class="produto__detalhes">
-                    <h3 class="produto__detalhes-title">Detalhes do produto</h3>
-                    <ul class="produto__detalhes-list">
-                        <li>
-                            <span>Categoria</span>
-                            <span id="detalheCategoria">Cervejas</span>
-                        </li>
-                        <li>
-                            <span>Código EAN</span>
-                            <span id="detalheEan">7891149107067</span>
-                        </li>
-                        <li>
-                            <span>Estoque mínimo</span>
-                            <span id="detalheEstoqueMin">10 unidades</span>
-                        </li>
-                        <li>
-                            <span>Cadastrado em</span>
-                            <span id="detalheData">Jan 2026</span>
-                        </li>
-                    </ul>
-                </div>
-
             </div>
+        </div>
+
+        <!-- ═══ Detalhes — largura total abaixo do layout ═══ -->
+        <div class="produto__detalhes">
+            <h3 class="produto__detalhes-title">Detalhes do produto</h3>
+            <ul class="produto__detalhes-list">
+                <li>
+                    <span>Categoria</span>
+                    <span id="detalheCategoria">Categoria</span>
+                </li>
+                <li>
+                    <span>Código EAN</span>
+                    <span id="detalheEan">Código EAN</span>
+                </li>
+                <li>
+                    <span>Estoque mínimo</span>
+                    <span id="detalheEstoqueMin">Estoque mínimo</span>
+                </li>
+                <li>
+                    <span>Cadastrado em</span>
+                    <span id="detalheData">Cadastrado em</span>
+                </li>
+            </ul>
         </div>
 
     </main>
