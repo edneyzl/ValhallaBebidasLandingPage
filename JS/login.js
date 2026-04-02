@@ -41,7 +41,7 @@ formLogin?.addEventListener('submit', async (e) => {
   /* ── Simulação — substitui por fetch quando a API estiver pronta ── */
   const usuarioFake = {
     id: 1,
-    nome: 'João Silva',
+    nome: 'Edney Fagundes',
     email: email,
     sucesso: true,
     mensagem: 'Login realizado com sucesso.'
