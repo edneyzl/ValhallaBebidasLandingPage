@@ -314,37 +314,35 @@
     width: var(--resumo-width);
     flex-shrink: 0;
     background-color: #161616;
-    border-radius: var(--resumo-radius);
-    border: 1px solid #232320;
-    padding: var(--resumo-padding);
+    border: 1px solid #1e1e1e;
+    border-radius: 20px;
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: var(--resumo-gap);
+    gap: 18px;
     position: sticky;
     top: calc(var(--nav-height) + 24px);
   }
   
   .carrinho__resumo-title {
-    font-size: var(--resumo-title-size);
+    font-size: 18px;
     font-weight: 700;
     color: #ffffff;
-    letter-spacing: -0.5px;
   }
   
-  /* ── Linha ── */
   .carrinho__resumo-linha {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
   
     span:first-child {
-      font-size: var(--resumo-linha-size);
+      font-size: 14px;
       font-weight: 300;
       color: #606060;
     }
   
     span:last-child {
-      font-size: var(--resumo-linha-size);
+      font-size: 14px;
       font-weight: 500;
       color: #ffffff;
     }
@@ -352,45 +350,42 @@
   
   .carrinho__frete {
     color: #D6BD77 !important;
+    font-style: italic;
   }
   
-  /* ── Divisor ── */
   .carrinho__resumo-divider {
-    width: 100%;
     height: 1px;
-    background-color: #232320;
+    background-color: #1e1e1e;
   }
   
-  /* ── Total ── */
   .carrinho__resumo-total {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: baseline;
   
     span:first-child {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: #ffffff;
     }
   
     span:last-child {
-      font-size: var(--resumo-total-size);
+      font-size: 28px;
       font-weight: 700;
       color: #D6BD77;
       letter-spacing: -1px;
     }
   }
   
-  /* ── Botão checkout ── */
   .carrinho__btn-checkout {
     width: 100%;
-    height: var(--btn-checkout-height);
+    height: 58px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #D6BD77;
-    border-radius: var(--btn-checkout-radius);
-    font-size: var(--btn-checkout-font-size);
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: 700;
     color: #000000;
     text-decoration: none;
@@ -401,12 +396,11 @@
     background-color: #e8d08e;
   }
   
-  /* ── Link continuar ── */
   .carrinho__btn-continuar {
     text-align: center;
-    font-size: var(--btn-continuar-size);
+    font-size: 13px;
     font-weight: 300;
-    color: #606060;
+    color: #3a3a3a;
     text-decoration: none;
     transition: color 0.2s ease;
   }
