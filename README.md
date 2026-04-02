@@ -258,6 +258,20 @@ cd ValhallaBebidas
 ### Catálogo
 ![Catalogo](./img/CatalogoPage.png)
 
+### Produtos
+![Produto](./img/ProdutosPage.png)
+
+### Carrinho
+![Carrinho](./img/CarrinhoPage.png)
+
+### Checkout
+![Checkout](./img/CheckOutPage.png)
+
+### Confirmação
+![Confirmação](./img/ConfirmaçãoPage.png)
+
+### Minhas Compras
+![Minhas Compras](./img/ComprasPage.png)
 ---
 
 ## 👨‍💻 Autor
