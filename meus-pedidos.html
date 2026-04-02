@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minhas Compras - Valhalla Bebidas</title>
+    <link rel="shortcut icon" href="./img/Marcas/Valhalla.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="./CSS/homepage.css" />
+    <link rel="stylesheet" href="./CSS/meus-pedidos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ═══════════ NAV ═══════════ -->
+    <nav class="nav" id="nav">
+        <div class="nav__left">
+            <a href="index.html" class="nav__logo">
+                <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+            </a>
+            <div class="nav__links">
+                <a href="index.html">Início</a>
+                <a href="index.html#about">Sobre</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="index.html#footer">Contato</a>
+            </div>
+        </div>
+        <div class="nav__right">
+            <div class="nav__guest">
+                <a href="login.html" class="nav__btn nav__btn--login">Login</a>
+                <a href="cadastro.html" class="nav__btn nav__btn--register">Cadastrar-se</a>
+            </div>
+            <div class="nav__user" id="nav-user">
+                <button type="button" class="nav__user-btn" id="userBtn">
+                    <span class="nav__user-name" id="userName">Usuário</span>
+                    <img src="./img/Icons/arrowDown.svg" alt="" />
+                </button>
+                <div class="nav__dropdown nav__dropdown--desktop" id="dropdown-desktop">
+                    <a href="meus-pedidos.html" class="nav__dropdown-item">
+                        <span class="nav__dropdown-icon"><img src="./img/Icons/market.svg" alt="" /></span>
+                        <span>Minhas Compras</span>
+                    </a>
+                    <div class="nav__dropdown-divider"></div>
+                    <a href="#" class="nav__dropdown-item nav__dropdown-item--logout" id="btn-logout-desktop">
+                        <span class="nav__dropdown-icon"><img src="./img/Icons/logout.svg" alt="" /></span>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="nav__mobile">
+            <button type="button" class="nav__mobile-btn" id="menuBtn" aria-label="Abrir menu">
+                <img src="./img/Icons/menu.svg" alt="" />
+            </button>
+            <div class="nav__dropdown nav__dropdown--mobile" id="dropdown-mobile">
+                <div class="nav__dropdown-user dropdown-auth">
+                    <span id="userNameMobile">Usuário</span>
+                </div>
+                <div class="nav__dropdown-divider dropdown-auth"></div>
+                <a href="meus-pedidos.html" class="nav__dropdown-item dropdown-auth">
+                    <span class="nav__dropdown-icon"><img src="./img/Icons/market.svg" alt="" /></span>
+                    <span>Minhas Compras</span>
+                </a>
+                <div class="nav__dropdown-divider dropdown-auth"></div>
+                <a href="login.html" class="nav__dropdown-item dropdown-guest">
+                    <span class="nav__dropdown-icon"><img src="./img/Icons/arrow.svg" alt="" /></span>
+                    <span>Login</span>
+                </a>
+                <a href="cadastro.html" class="nav__dropdown-item dropdown-guest">
+                    <span class="nav__dropdown-icon"><img src="./img/Icons/user.svg" alt="" /></span>
+                    <span>Cadastrar-se</span>
+                </a>
+                <div class="nav__dropdown-divider dropdown-guest"></div>
+                <a href="#" class="nav__dropdown-item nav__dropdown-item--logout dropdown-auth" id="btn-logout-mobile">
+                    <span class="nav__dropdown-icon"><img src="./img/Icons/logout.svg" alt="" /></span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════ MEUS PEDIDOS ═══════════ -->
+    <main class="pedidos">
+
+        <!-- ── Header ── -->
+        <div class="pedidos__header">
+            <div>
+                <h1>Minhas Compras</h1>
+                <p id="pedidosCount">0 pedidos</p>
+            </div>
+            <a href="catalogo.html" class="pedidos__btn-novo">+ Novo pedido</a>
+        </div>
+
+        <!-- ── Filtros de status ── -->
+        <div class="pedidos__filtros">
+            <button class="pedidos__filtro pedidos__filtro--active" data-status="todos">Todos</button>
+            <button class="pedidos__filtro" data-status="Pendente">Pendentes</button>
+            <button class="pedidos__filtro" data-status="Confirmado">Confirmados</button>
+            <button class="pedidos__filtro" data-status="Cancelado">Cancelados</button>
+        </div>
+
+        <!-- ── Lista de pedidos ── -->
+        <div class="pedidos__lista" id="pedidosLista">
+            <!-- injetado via JS -->
+        </div>
+
+        <!-- ── Estado vazio ── -->
+        <div class="pedidos__vazio" id="pedidosVazio" style="display:none;">
+            <p>Nenhum pedido encontrado.</p>
+            <a href="catalogo.html" class="pedidos__vazio-link">Explorar catálogo</a>
+        </div>
+
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer" id="footer">
+        <div class="footer__content">
+            <div class="footer__brand">
+                <a href="index.html" class="footer__logo">
+                    <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+                </a>
+                <p class="footer__desc">Distribuição premium de bebidas para negócios que exigem o melhor.</p>
+            </div>
+            <nav class="footer__nav">
+                <h4 class="footer__nav-title">Navegação</h4>
+                <ul class="footer__nav-list">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#about">Sobre</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="index.html#footer">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="footer__social">
+                <h4 class="footer__nav-title">Redes Sociais</h4>
+                <div class="footer__social-icons">
+                    <a href="#" class="footer__social-btn" aria-label="Instagram">
+                        <img src="./img/Icons/Instagram.svg" alt="" />
+                    </a>
+                    <a href="#" class="footer__social-btn" aria-label="WhatsApp">
+                        <img src="./img/Icons/Whatsapp.svg" alt="" />
+                    </a>
+                    <a href="#" class="footer__social-btn" aria-label="LinkedIn">
+                        <img src="./img/Icons/Linkedin.svg" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2026 Valhalla Bebidas. Todos os direitos reservados.</p>
+            <p>Desenvolvido por <span>Tecnomancy</span></p>
+        </div>
+    </footer>
+
+    <script src="./JS/auth.js"></script>
+    <script src="./JS/nav.js"></script>
+    <script src="./JS/meus-pedidos.js"></script>
+
+</body>
+</html>
