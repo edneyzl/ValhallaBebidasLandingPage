@@ -14,6 +14,9 @@ const produtosMock = [
   { id: '10', nome: 'Crystal sem Gás 1,5L',       preco: 3.50,  categoria: 'aguas',         imagem: '' },
   { id: '11', nome: 'Schin Pilsen 473ml',         preco: 4.20,  categoria: 'cervejas',      imagem: '' },
   { id: '12', nome: 'Guaraná Antarctica 2L',      preco: 7.90,  categoria: 'refrigerantes', imagem: '' },
+  { id: '13', nome: 'Vodka 70ml',                 preco: 10.90, categoria: 'destilados',    imagem: '' },
+  { id: '14', nome: 'Whisky 70ml',                 preco: 10.90, categoria: 'destilados',    imagem: '' },
+  { id: '15', nome: 'Tequila 70ml',                 preco: 10.90, categoria: 'destilados',    imagem: '' },
 ];
 
 /* ════════════════════════════════════════════════════════

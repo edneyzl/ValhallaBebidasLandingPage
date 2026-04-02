@@ -21,6 +21,9 @@ const produtosMock = [
     { id: '10', nome: 'Crystal sem Gás 1,5L',     preco: 3.50,  categoria: 'Águas',         ean: '7891149107010', descricao: 'Água mineral natural sem gás, pura e cristalina. Fonte de hidratação essencial para o dia a dia.',            estoque: 500, estoqueMin: 80, imagem: '', dataCadastro: 'Jan 2026' },
     { id: '11', nome: 'Schin Pilsen 473ml',        preco: 4.20,  categoria: 'Cervejas',      ean: '7891149107011', descricao: 'Cerveja Pilsen com sabor suave e refrescante. Alta qualidade com preço acessível.',                           estoque: 220, estoqueMin: 40, imagem: '', dataCadastro: 'Jan 2026' },
     { id: '12', nome: 'Guaraná Antarctica 2L',     preco: 7.90,  categoria: 'Refrigerantes', ean: '7891149107012', descricao: 'O refrigerante mais brasileiro do Brasil. Sabor único de guaraná com a refrescância que você conhece.',       estoque: 260, estoqueMin: 40, imagem: '', dataCadastro: 'Jan 2026' },
+    { id: '13', nome: 'Vodka 70ml',                 preco: 10.90, categoria: 'Destilados',    ean: '7891149107013', descricao: 'Vodka com sabor marcante e refrescante. Ideal para ocasiões especiais e consumo imediato.',                           estoque: 100, estoqueMin: 20, imagem: '', dataCadastro: 'Jan 2026' },
+    { id: '14', nome: 'Whisky 70ml',                 preco: 10.90, categoria: 'Destilados',    ean: '7891149107014', descricao: 'Whisky com sabor marcante e refrescante. Ideal para ocasiões especiais e consumo imediato.',                           estoque: 100, estoqueMin: 20, imagem: '', dataCadastro: 'Jan 2026' },
+    { id: '15', nome: 'Tequila 70ml',                 preco: 10.90, categoria: 'Destilados',    ean: '7891149107015', descricao: 'Tequila com sabor marcante e refrescante. Ideal para ocasiões especiais e consumo imediato.',                           estoque: 100, estoqueMin: 20, imagem: '', dataCadastro: 'Jan 2026' },
   ];
   
   /* ════════════════════════════════════════════════════════
