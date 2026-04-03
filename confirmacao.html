@@ -15,132 +15,133 @@
 
 <body>
 
-<!-- ═══════════ NAV ═══════════ -->
-<nav class="nav" id="nav">
-    <div class="nav__left">
-      <a href="#body" class="nav__logo">
-        <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
-      </a>
-
-      <div class="nav__links">
-        <a href="#body">Início</a>
-        <a href="#about">Sobre</a>
-        <a href="#category">Catálogo</a>
-        <a href="#footer">Contato</a>
+    <!-- ═══════════ NAV ═══════════ -->
+    <nav class="nav" id="nav">
+      <div class="nav__left">
+        <a href="#body" class="nav__logo">
+          <img src="./img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+        </a>
+ 
+        <div class="nav__links">
+          <a href="#body">Início</a>
+          <a href="#about">Sobre</a>
+          <a href="#category">Catálogo</a>
+          <a href="#footer">Contato</a>
+        </div>
       </div>
-    </div>
+ 
+      <!-- ── Desktop direito ── -->
+      <div class="nav__right">
+ 
+        <!-- Visitante -->
+        <div class="nav__guest">
+          <a href="login.html" class="nav__btn nav__btn--login">Login</a>
+          <a href="cadastro.html" class="nav__btn nav__btn--register">Cadastrar-se</a>
+        </div>
+ 
+        <!-- Logado -->
+        <div class="nav__user" id="nav-user">
+          <button type="button" class="nav__user-btn" id="userBtn">
+            <span class="nav__user-name" id="userName">Usuário</span>
+            <img src="./img/Icons/arrowDown.svg" alt="" />
+          </button>
+ 
+          <div class="nav__dropdown nav__dropdown--desktop" id="dropdown-desktop">
+            <a href="perfil.html" class="nav__dropdown-item dropdown-auth">
+              <span class="nav__dropdown-icon">
+                <img src="./img/Icons/user.svg" alt="" />
+              </span>
+              <span>Meu Perfil</span>
+            </a>
+ 
+            <div class="nav__dropdown-divider"></div>
 
-    <!-- ── Desktop direito ── -->
-    <div class="nav__right">
+            <a href="compras.html" class="nav__dropdown-item">
+              <span class="nav__dropdown-icon">
+                <img src="./img/Icons/market.svg" alt="" />
+              </span>
+              <span>Minhas Compras</span>
+            </a>
 
-      <!-- Visitante -->
-      <div class="nav__guest">
-        <a href="login.html" class="nav__btn nav__btn--login">Login</a>
-        <a href="cadastro.html" class="nav__btn nav__btn--register">Cadastrar-se</a>
+            <div class="nav__dropdown-divider"></div>
+ 
+            <a href="#" class="nav__dropdown-item nav__dropdown-item--logout" id="btn-logout-desktop">
+              <span class="nav__dropdown-icon">
+                <img src="./img/Icons/logout.svg" alt="" />
+              </span>
+              <span>Logout</span>
+            </a>
+          </div>
+        </div>
+ 
       </div>
-
-      <!-- Logado -->
-      <div class="nav__user" id="nav-user">
-        <button type="button" class="nav__user-btn" id="userBtn">
-          <span class="nav__user-name" id="userName">Usuário</span>
-          <img src="./img/Icons/arrowDown.svg" alt="" />
+ 
+      <!-- ── Carrinho — fora do nav__right, visível em todos os breakpoints ── -->
+      <button type="button" class="nav__cart" id="cartBtn">
+        <img src="./img/Icons/cart.svg" alt="Carrinho" />
+        <span class="nav__cart-count" id="cartCount">0</span>
+      </button>
+ 
+      <!-- ── Mobile ── -->
+      <div class="nav__mobile">
+        <button type="button" class="nav__mobile-btn" id="menuBtn" aria-label="Abrir menu">
+          <img src="./img/Icons/menu.svg" alt="" />
         </button>
-
-        <div class="nav__dropdown nav__dropdown--desktop" id="dropdown-desktop">
-          <a href="perfil.html" class="nav__dropdown-item">
+ 
+        <div class="nav__dropdown nav__dropdown--mobile" id="dropdown-mobile">
+ 
+          <div class="nav__dropdown-user dropdown-auth">
+            <span id="userNameMobile">Usuário</span>
+          </div>
+ 
+          
+          <a href="perfil.html" class="nav__dropdown-item dropdown-auth">
             <span class="nav__dropdown-icon">
               <img src="./img/Icons/user.svg" alt="" />
             </span>
             <span>Meu Perfil</span>
           </a>
 
-          <div class="nav__dropdown-divider"></div>
+          <div class="nav__dropdown-divider dropdown-auth"></div>
 
-          <a href="compras.html" class="nav__dropdown-item">
+          <!-- Só logado vê -->
+          <a href="compras.html" class="nav__dropdown-item dropdown-auth">
             <span class="nav__dropdown-icon">
               <img src="./img/Icons/market.svg" alt="" />
             </span>
             <span>Minhas Compras</span>
           </a>
+ 
+          <div class="nav__dropdown-divider dropdown-auth"></div>
+ 
+          <!-- Só visitante vê -->
+          <a href="login.html" class="nav__dropdown-item dropdown-guest">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/arrow.svg" alt="" />
+            </span>
+            <span>Login</span>
+          </a>
 
-          <div class="nav__dropdown-divider"></div>
-
-          <a href="#" class="nav__dropdown-item nav__dropdown-item--logout" id="btn-logout-desktop">
+          <div class="nav__dropdown-divider dropdown-guest"></div>
+ 
+          <a href="cadastro.html" class="nav__dropdown-item dropdown-guest">
+            <span class="nav__dropdown-icon">
+              <img src="./img/Icons/user.svg" alt="" />
+            </span>
+            <span>Cadastrar-se</span>
+          </a>
+ 
+ 
+          <a href="#" class="nav__dropdown-item nav__dropdown-item--logout dropdown-auth" id="btn-logout-mobile">
             <span class="nav__dropdown-icon">
               <img src="./img/Icons/logout.svg" alt="" />
             </span>
             <span>Logout</span>
           </a>
+ 
         </div>
       </div>
-
-    </div>
-
-    <!-- ── Carrinho — fora do nav__right, visível em todos os breakpoints ── -->
-    <button type="button" class="nav__cart" id="cartBtn">
-      <img src="./img/Icons/cart.svg" alt="Carrinho" />
-      <span class="nav__cart-count" id="cartCount">0</span>
-    </button>
-
-    <!-- ── Mobile ── -->
-    <div class="nav__mobile">
-      <button type="button" class="nav__mobile-btn" id="menuBtn" aria-label="Abrir menu">
-        <img src="./img/Icons/menu.svg" alt="" />
-      </button>
-
-      <div class="nav__dropdown nav__dropdown--mobile" id="dropdown-mobile">
-
-        <div class="nav__dropdown-user dropdown-auth">
-          <span id="userNameMobile">Usuário</span>
-        </div>
-
-        
-        <a href="perfil.html" class="nav__dropdown-item">
-          <span class="nav__dropdown-icon">
-            <img src="./img/Icons/user.svg" alt="" />
-          </span>
-          <span>Meu Perfil</span>
-        </a>
-
-        <div class="nav__dropdown-divider dropdown-auth"></div>
-
-        <!-- Só logado vê -->
-        <a href="compras.html" class="nav__dropdown-item dropdown-auth">
-          <span class="nav__dropdown-icon">
-            <img src="./img/Icons/market.svg" alt="" />
-          </span>
-          <span>Minhas Compras</span>
-        </a>
-
-        <div class="nav__dropdown-divider dropdown-auth"></div>
-
-        <!-- Só visitante vê -->
-        <a href="login.html" class="nav__dropdown-item dropdown-guest">
-          <span class="nav__dropdown-icon">
-            <img src="./img/Icons/arrow.svg" alt="" />
-          </span>
-          <span>Login</span>
-        </a>
-
-        <a href="cadastro.html" class="nav__dropdown-item dropdown-guest">
-          <span class="nav__dropdown-icon">
-            <img src="./img/Icons/user.svg" alt="" />
-          </span>
-          <span>Cadastrar-se</span>
-        </a>
-
-        <div class="nav__dropdown-divider dropdown-guest"></div>
-
-        <a href="#" class="nav__dropdown-item nav__dropdown-item--logout dropdown-auth" id="btn-logout-mobile">
-          <span class="nav__dropdown-icon">
-            <img src="./img/Icons/logout.svg" alt="" />
-          </span>
-          <span>Logout</span>
-        </a>
-
-      </div>
-    </div>
-  </nav>
+    </nav>
 
     <!-- ═══════════ CONFIRMAÇÃO ═══════════ -->
     <main class="confirmacao">
