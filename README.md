@@ -8,33 +8,47 @@
 
 A **Valhalla Bebidas** é uma aplicação web completa para distribuidoras de bebidas, permitindo que parceiros comerciais acessem o catálogo exclusivo, adicionem produtos ao carrinho e realizem pedidos online com preços especiais.
 
-O projeto está dividido em duas frentes:
+O projeto é **full-stack**, dividido em camadas:
 
-- **Frontend** — Landing Page + Páginas autenticadas (em desenvolvimento)
-- **Backend** — API REST com .NET + Entity Framework Core (planejado)
+- **Frontend Web** — ASP.NET Core MVC com Razor Views + JavaScript
+- **Backend API** — .NET 10 REST API com Clean Architecture
+- **Banco de Dados** — SQL Server via Entity Framework Core
 
 ---
 
 ## 🚀 Tecnologias
 
-### Frontend
+### Frontend (Web — ASP.NET Core MVC)
 | Tecnologia | Uso |
 |---|---|
-| HTML5 semântico | Estrutura das páginas |
-| CSS3 + Custom Properties | Estilização com tokens de design |
-| JavaScript puro (ES6+) | Interações e animações |
+| ASP.NET Core MVC | Framework web |
+| Razor Views | Templates server-side |
+| JavaScript (ES6+) | Interações e requisições à API |
 | [GSAP 3.12](https://gsap.com/) | Animações de scroll e entrada |
 | [ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) | Trigger de animações |
 | [Lenis](https://github.com/darkroomengineering/lenis) | Scroll suave |
+| Bootstrap | Componentes base |
 | [Sora](https://fonts.google.com/specimen/Sora) | Tipografia |
 
-### Backend *(planejado)*
+### Backend (API — Clean Architecture)
 | Tecnologia | Uso |
 |---|---|
-| .NET 8 | API REST |
-| Entity Framework Core | ORM + migrations |
+| .NET 10 | API REST |
+| Entity Framework Core 10 | ORM + migrations |
 | SQL Server | Banco de dados |
-| JWT (httpOnly Cookie) | Autenticação |
+| BCrypt.Net | Hash de senhas |
+| Swagger / OpenAPI | Documentação da API |
+
+### Arquitetura
+```
+API (Controllers)
+    ↓
+Application (Services + DTOs)
+    ↓
+Domain (Entities + Enums + Interfaces)
+    ↑
+Infrastructure (DbContext + Repositories)
+```
 
 ---
 
@@ -42,55 +56,64 @@ O projeto está dividido em duas frentes:
 
 ```
 ValhallaBebidas/
-├── index.html                  # Landing page principal
-├── login.html                  # Página de login ✅
-├── cadastro.html               # Página de cadastro (em desenvolvimento)
-├── catalogo.html               # Catálogo de produtos (em desenvolvimento)
+├── ValhallaBebidas.API/               # API REST (Clean Architecture)
+│   ├── Controllers/                   # Endpoints públicos
+│   ├── Program.cs                     # Configuração da API
+│   └── appsettings.Development.json   # Connection string local
 │
-├── CSS/
-│   ├── homepage.css            # CSS — HomePage (desktop)
-│   ├── tablet.css              # CSS — Tablet (601px–1020px)
-│   ├── mobile.css              # CSS — Mobile (≤600px)
-│   └── login.css               # CSS — Login
+├── ValhallaBebidas.Application/       # Camada de aplicação
+│   ├── DTOs/                          # Data Transfer Objects
+│   └── Services/                      # Regras de negócio
 │
-├── JS/
-│   ├── animations.js           # GSAP + Lenis + ScrollTrigger
-│   ├── script.js               # Nav, carrinho e auth
-│   └── login.js                # Animações de entrada do login
+├── ValhallaBebidas.Domain/            # Entidades e contratos
+│   ├── Entities/                      # Modelos de domínio
+│   ├── Enums/                         # StatusPedido, DirecaoMovimentacao
+│   └── Interfaces/                    # Contratos de repositórios
 │
-└── img/
-    ├── Icons/                  # Ícones SVG
-    ├── Marcas/                 # Logos das marcas parceiras
-    ├── ModelValhalla.png       # Imagem hero
-    ├── mockupValhalla.png      # Mockup iPhone para login
-    ├── HomePage.png            # Preview da landing page
-    └── LoginPage.png           # Preview da página de login
+├── ValhallaBebidas.Infrastructure/    # Persistência de dados
+│   ├── Data/                          # DbContext + Seeder
+│   ├── Repositories/                  # Implementação dos repositórios
+│   └── Migrations/                    # Migrations do EF Core
+│
+├── ValhallaBebidas.Web/               # Frontend MVC
+│   ├── Controllers/                   # Controllers Razor + API Proxy
+│   ├── Views/                         # Razor Views (.cshtml)
+│   ├── wwwroot/                       # CSS, JS, imagens
+│   ├── Filters/                       # AuthFilter
+│   └── Models/                        # ViewModels
+│
+└── ValhallaBebidas.slnx               # Solution file
 ```
 
 ---
 
 ## 📄 Páginas
 
-### Landing Page
+### Landing Page (pública — Home)
 | Seção | Descrição |
 |---|---|
-| **Nav** | Fixo, com estados visitante e logado. Menu mobile com dropdown |
-| **Hero** | Título principal + CTA + imagem do representante |
-| **Brands** | Marquee animado com logos das marcas parceiras |
-| **Stats** | 500+ clientes, 12 estados, 3 grandes marcas |
-| **About** | Sobre a empresa + cards de benefícios |
-| **Work** | Como funciona — 3 passos: Cadastre-se, Explore, Peça |
-| **CPA** | Distribuidores autorizados |
-| **Category** | Cards de destaque do catálogo |
-| **Partner** | Formulário de cadastro para novos parceiros |
-| **Footer** | Links, contato e redes sociais |
+| **Nav** | Fixo, com estados visitante e logado |
+| **Hero** | Título principal + CTA |
+| **Brands** | Marquee com marcas parceiras |
+| **Stats** | Indicadores da empresa |
+| **About** | Sobre + cards de benefícios |
+| **Footer** | Links e redes sociais |
 
-### Login
-| Elemento | Descrição |
+### Login / Cadastro
+| Página | Descrição |
 |---|---|
-| **Painel esquerdo** | Gradiente dourado + mockup iPhone com a landing page |
-| **Formulário** | Email, senha, botão de acesso e link para cadastro |
-| **Animação** | Mockup sobe + formulário desliza ao carregar a página |
+| **Login** | Validação via API, sessão server-side |
+| **Cadastro** | Formulário completo com endereço via ViaCEP |
+
+### Autenticado
+| Página | Descrição |
+|---|---|
+| **Catálogo** | Produtos com filtro por categoria + busca + ordenação |
+| **Detalhe do Produto** | Info completa, estoque, botão de adicionar ao carrinho |
+| **Carrinho** | Sidebar com itens, quantidades e total |
+| **Checkout** | Endereço de entrega + método de pagamento |
+| **Confirmação** | Pedido confirmado com resumo |
+| **Minhas Compras** | Histórico de pedidos com filtro por status |
 
 ---
 
@@ -108,86 +131,6 @@ ValhallaBebidas/
 
 ### Tipografia
 - **Fonte:** Sora (Google Fonts)
-- **Pesos:** 100, 200, 300, 400, 500, 600, 700, 800
-
-### Breakpoints
-| Nome | Range |
-|---|---|
-| Desktop | `> 1020px` |
-| Tablet | `601px – 1020px` |
-| Mobile | `≤ 600px` |
-
----
-
-## ✨ Animações
-
-**`animations.js` — Landing Page:**
-- **Reveal on scroll** — elementos com `.reveal` aparecem com fade + slide up
-- **Stats sequencial** — números aparecem um a um com delay de `0.4s`
-- **Category cards** — cards aparecem sequencialmente com delay de `0.3s`
-- **Scroll suave** — Lenis com `duration: 0.8` integrado ao ScrollTrigger
-- **Links âncora** — scroll suave via `lenis.scrollTo()` com offset da nav
-
-**`login.js` — Login:**
-- **Mockup** — sobe da base com fade ao carregar
-- **Logo** — desce do topo com fade
-- **Formulário** — desliza da direita com fade
-
----
-
-## 🔐 Autenticação *(Frontend simulado)*
-
-O estado de autenticação é simulado via `localStorage` enquanto o backend não está integrado:
-
-```javascript
-// Simular login
-localStorage.setItem('logado', 'true');
-localStorage.setItem('nomeUser', 'João');
-location.reload();
-
-// Simular logout
-localStorage.removeItem('logado');
-localStorage.removeItem('nomeUser');
-location.reload();
-```
-
-A nav alterna automaticamente entre os estados **visitante** e **logado** em desktop e mobile.
-
----
-
-## 🛒 Carrinho
-
-O carrinho lateral (sidebar) é controlado via `localStorage` enquanto o backend não está integrado:
-
-- Abre ao clicar no ícone da nav (visível apenas para logados)
-- Persiste os itens entre páginas via `localStorage`
-- Função global `adicionarAoCarrinho(produto)` disponível para o catálogo
-- Ao fazer logout, o carrinho é limpo automaticamente
-
----
-
-## 🗄️ Modelagem do Banco *(planejado)*
-
-```
-Cliente
-├── Id, Nome, Email, SenhaHash
-├── Documento (CPF/CNPJ), Telefone
-├── Status, EnderecoId → Endereco
-
-Produto
-├── Id, Nome, EanCodBarras, Descricao
-├── PrecoVenda, PrecoCusto, Estoque
-├── Status, CategoriaId → Categoria
-
-Pedido
-├── Id, ClienteId → Cliente
-├── ValorTotal, Status, DataPedido
-
-PedidoItem
-├── Id, PedidoId → Pedido
-├── ProdutoId → Produto
-└── Quantidade, Subtotal
-```
 
 ---
 
@@ -196,50 +139,184 @@ PedidoItem
 ```
 Landing Page (pública)
     ↓
-Login / Cadastro
+Login / Cadastro  →  POST /api/auth/login-cliente  →  Session
     ↓
-Catálogo (autenticado) → fetch GET /api/produtos
+Catálogo  →  GET /api/produto
     ↓
-Carrinho → POST /api/pedidos
+Carrinho (sidebar)  →  localStorage
     ↓
-Pagamento (Stripe modo teste)
+Checkout  →  PUT /api/pedido  →  Salva pedido + baixa estoque
     ↓
-Confirmação
+Confirmação  →  GET /api/pedido/{id}
 ```
 
 ---
 
 ## 📦 Como Rodar
 
-O projeto é **100% frontend estático** — sem dependências ou build step.
+### Pré-requisitos
+- [.NET 10 SDK](https://dotnet.microsoft.com/download)
+- [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads) ou LocalDB
+- (Opcional) [SSMS](https://learn.microsoft.com/pt-br/sql/ssms/) para gerenciar o banco
 
+### 1. Clone o repositório
 ```bash
-# Clone o repositório
-git clone https://github.com/edneyzl/ValhallaBebidas.git
-
-# Entre na pasta
+git clone https://github.com/RodrigolsBento/ValhallaBebidas.git
 cd ValhallaBebidas
-
-# Abra o index.html no navegador ou use Live Server no VS Code
 ```
+
+### 2. Configure a conexão
+A connection string está em `ValhallaBebidas.API/appsettings.Development.json`:
+```json
+"ConnectionStrings": {
+  "ValhallaBebidasConnection": "Server=(localdb)\\mssqllocaldb;Database=ValhallaBebidasDb;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+```
+Ajuste para o seu ambiente. Para SQL Server local:
+```
+"Server=localhost;Database=ValhallaBebidasDb;Trusted_Connection=True;TrustServerCertificate=True;"
+```
+
+### 3. Crie e aplique o banco
+```bash
+# Gera as migrations
+dotnet ef migrations add InitialCreate \
+  --project ValhallaBebidas.Infrastructure \
+  --startup-project ValhallaBebidas.API
+
+# Aplica ao banco
+dotnet ef database update \
+  --project ValhallaBebidas.Infrastructure \
+  --startup-project ValhallaBebidas.API
+```
+
+### 4. Inicie os projetos
+```bash
+# API (porta 5101 padrão)
+dotnet run --project ValhallaBebidas.API
+
+# Web (porta definida no launchSettings)
+dotnet run --project ValhallaBebidas.Web
+```
+
+Ou abra o `ValhallaBebidas.slnx` no **Visual Studio / VS Code** e execute ambos os projetos.
+
+### 5. Swagger
+Com a API rodando, acesso em: `http://localhost:5101/`
+
+---
+
+## 🗄️ Modelagem do Banco
+
+```
+Cliente
+├── Id, Nome, Email, SenhaHash (BCrypt)
+├── Documento (CPF/CNPJ), Telefone
+├── Status, EnderecoId → Endereco
+│
+├── Pedidos (ICollection)
+
+Endereco
+├── Id, TipoLogradouro, Logradouro, Numero
+├── Complemento, Cep, Bairro, Cidade, Estado
+
+Funcionario
+├── Id, NomeCompleto, Login, SenhaHash (BCrypt)
+├── CPF, Email, Telefone, DataNascimento
+├── Status, EnderecoId → Endereco
+
+Produto
+├── Id, Nome, EAN, Descricao
+├── PrecoVenda, PrecoCusto
+├── QuantidadeEstoque, QuantidadeMinimo
+├── Status, CategoriaId → Categoria
+│
+├── ItensPedido, Movimentacoes
+
+Categoria
+├── Id, Nome
+│
+└── Produtos (ICollection)
+
+Pedido
+├── Id, ClienteId → Cliente
+├── ValorTotal, Status (Pendente | Confirmado | Cancelado)
+├── DataPedido (UTC)
+│
+├── Itens (ICollection), Cliente
+
+ItemPedido
+├── Id, PedidoId → Pedido
+├── ProdutoId → Produto
+├── Quantidade, PrecoUnitario
+└── Subtotal (calculado)
+
+Movimentacao
+├── Id, ProdutoId → Produto
+├── Quantidade, Direcao (Entrada | Saida)
+├── Motivo, Data (UTC)
+└── ValorImpactoEstoque (calculado)
+```
+
+---
+
+## 🛒 Carrinho
+
+O carrinho é mantido no **localStorage** do navegador e sincronizado com a API no momento do checkout:
+
+- Ícone na nav (visível apenas para logados)
+- Persiste entre páginas e recarregamentos
+- Limpo automaticamente ao fazer logout
+- Checkout valida estoque na API via `POST /api/pedido`
+
+---
+
+## 🔐 Autenticação
+
+### Cliente (Web) → Session
+- Login valida via API (`/api/auth/login-cliente`) com BCrypt
+- Credenciais salvas em **server-side session** (não localStorage)
+- `AuthFilter` protege rotas Razor que requerem login
+
+### Funcionário → Windows Forms
+- Login validado via `FuncionarioService.LoginAsync` / `AutenticarAsync`
+- Senhas com BCrypt
+- Status `false` bloqueia acesso
+
+---
+
+## 🏗️ Funcionalidades Implementadas
+
+### Core
+- [x] CRUD completo: Cliente, Funcionário, Produto, Categoria, Pedido
+- [x] Login + Cadastro com validação e sessão
+- [x] Catálogo com filtro, busca e ordenação
+- [x] Carrinho com persistência local
+- [x] Checkout com validação de estoque
+- [x] Minhas Compras com filtro por status
+- [x] Dashboard de vendas (agregações)
+
+### Arquitetura
+- [x] Clean Architecture (4 camadas)
+- [x] Repository Pattern + Unit of Work
+- [x] BCrypt para senhas
+- [x] Soft delete (Status booleano)
+- [x] Global error handling por entidade
+- [x] Migrations EF Core
+- [x] Data seeding (categorias + admin)
 
 ---
 
 ## 🗺️ Roadmap
 
-- [x] Landing page completa
-- [x] Responsividade desktop, tablet e mobile
-- [x] Nav com dropdown e estado logado/visitante
-- [x] Animações GSAP + Lenis
-- [x] Carrinho lateral com localStorage
-- [x] `login.html`
-- [ ] `cadastro.html`
-- [ ] `catalogo.html` com filtros
-- [ ] `carrinho.html`
-- [ ] Backend .NET — AuthController
-- [ ] Backend .NET — ProdutosController
-- [ ] Backend .NET — PedidosController
-- [ ] Integração Stripe modo teste
+- [ ] Token JWT para autenticação na API (em vez de apenas session)
+- [ ] Validação FluentValidation nos DTOs
+- [ ] Paginação nos endpoints de listagem
+- [ ] Tratamento global de erros (middleware)
+- [ ] Upload de imagens de produto
+- [ ] Pagamento (Stripe simulado)
+- [ ] Testes unitários (xUnit)
+- [ ] Global Query Filters para soft delete
 - [ ] Deploy
 
 ---
@@ -272,6 +349,7 @@ cd ValhallaBebidas
 
 ### Minhas Compras
 ![Minhas Compras](./img/ComprasPage.png)
+
 ---
 
 ## 👨‍💻 Autor
@@ -280,4 +358,4 @@ Desenvolvido por **TecnoMancy**
 
 ---
 
-*Projeto fictício.*
+*Projeto acadêmico fictício.*
