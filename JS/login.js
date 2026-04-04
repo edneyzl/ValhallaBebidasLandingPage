@@ -30,6 +30,29 @@ loginDropMobile?.querySelectorAll('.nav__dropdown-item').forEach(item => {
    Depende de: auth.js
 ════════════════════════════════════════════════════════ */
 
+/* ════════════════════════════════════════════════════════
+   TOGGLE SENHA — Mostrar / ocultar
+════════════════════════════════════════════════════════ */
+const toggleSenha = document.getElementById('toggleSenha');
+
+toggleSenha?.addEventListener('click', () => {
+  const input = document.getElementById('senha');
+  const isPassword = input.type === 'password';
+  input.type = isPassword ? 'text' : 'password';
+
+  // Troca o ícone visível
+  const eyeOpen = toggleSenha.querySelector('.eye-open');
+  const eyeClose = toggleSenha.querySelector('.eye-close');
+  eyeOpen.style.display = isPassword ? 'none' : 'block';
+  eyeClose.style.display = isPassword ? 'block' : 'none';
+
+  // Atualiza aria-label para acessibilidade
+  toggleSenha.setAttribute('aria-label', isPassword ? 'Ocultar senha' : 'Mostrar senha');
+});
+
+/* ════════════════════════════════════════════════════════
+   LOGIN FORM — Submit
+════════════════════════════════════════════════════════ */
 const formLogin = document.getElementById('formLogin');
 
 formLogin?.addEventListener('submit', async (e) => {
